@@ -666,7 +666,7 @@ class URL {
 	//
 	//  $url = URLParser::addQuery( array('userid',12) )->to('http://www.google.ca/?q=stuff');
 	//
-	public function __callStatic( $method, $arguments )
+	public static function __callStatic( $method, $arguments )
 	{
 		$class = get_called_class();
 		// Create a new instance (will reset $url)
