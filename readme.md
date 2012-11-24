@@ -52,7 +52,7 @@ Full URL of the current page minus the URI segments and query string.
 ###Swap a URI string
 
 ```php
-$url = URLParser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe');
+$url = new URLParser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe');
 $url->swapSegment('date','raisin');
 echo $url->make();
 ```
@@ -64,7 +64,7 @@ http://www.apple.com/bananas/coconut/raisin/elephant/giraffe
 ###Put something in front of coconut
 
 ```php
-$url = URLParser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe');
+$url = new URLParser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe');
 $url->prependSegment('lime','coconut');
 echo $url->make();
 ```
