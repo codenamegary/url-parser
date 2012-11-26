@@ -1,0 +1,734 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \URLParser\URL</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu"></ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">16</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___call" title="__call :: "><span class="description">__call()
+        </span><pre>__call()</pre></a></li>
+<li class="method public "><a href="#method___callStatic" title="__callStatic :: "><span class="description">__callStatic()
+        </span><pre>__callStatic()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Base constructor, accepts a url or by default
+uses the current full URL of the page being
+visited."><span class="description">Base constructor, accepts a url or by default
+uses the current full URL of the page being
+visited.</span><pre>__construct()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method__addQuery" title="_addQuery :: Appends a $key =&gt; $value array into the URL's
+query string."><span class="description">Appends a $key =&gt; $value array into the URL's
+query string.</span><pre>_addQuery()</pre></a></li>
+<li class="method protected "><a href="#method__anchor" title="_anchor :: Sets or returns the anchor tag at the end of the URL"><span class="description">Sets or returns the anchor tag at the end of the URL</span><pre>_anchor()</pre></a></li>
+<li class="method protected "><a href="#method__appendSegment" title="_appendSegment :: Appends a specified text segment to the URL path."><span class="description">Appends a specified text segment to the URL path.</span><pre>_appendSegment()</pre></a></li>
+<li class="method protected "><a href="#method__currentURL" title="_currentURL :: Parses and returns the full URL of the page
+currently being visited."><span class="description">Parses and returns the full URL of the page
+currently being visited.</span><pre>_currentURL()</pre></a></li>
+<li class="method protected "><a href="#method__host" title="_host :: Sets or returns the host (domain) for the url."><span class="description">Sets or returns the host (domain) for the url.</span><pre>_host()</pre></a></li>
+<li class="method protected "><a href="#method__make" title="_make :: "><span class="description">_make()
+        </span><pre>_make()</pre></a></li>
+<li class="method protected "><a href="#method__pass" title="_pass :: Sets or returns the password for auth."><span class="description">Sets or returns the password for auth.</span><pre>_pass()</pre></a></li>
+<li class="method protected "><a href="#method__port" title="_port :: Sets or returns the port for the url."><span class="description">Sets or returns the port for the url.</span><pre>_port()</pre></a></li>
+<li class="method protected "><a href="#method__prependSegment" title="_prependSegment :: Prepends a specified text segment to the URL path."><span class="description">Prepends a specified text segment to the URL path.</span><pre>_prependSegment()</pre></a></li>
+<li class="method protected "><a href="#method__protocol" title="_protocol :: Sets or returns the protocol for the URL (http/ftp/etc.)."><span class="description">Sets or returns the protocol for the URL (http/ftp/etc.).</span><pre>_protocol()</pre></a></li>
+<li class="method protected "><a href="#method__query" title="_query :: Returns the query string for the current URL or, if
+$query is specified returns the value for that parameter"><span class="description">Returns the query string for the current URL or, if
+$query is specified returns the value for that parameter</span><pre>_query()</pre></a></li>
+<li class="method protected "><a href="#method__queryArray" title="_queryArray :: Returns the query string for the current URL as a $key =&gt; $value array."><span class="description">Returns the query string for the current URL as a $key =&gt; $value array.</span><pre>_queryArray()</pre></a></li>
+<li class="method protected "><a href="#method__segmentArray" title="_segmentArray :: Returns the segments (path) string for the current URL as an array."><span class="description">Returns the segments (path) string for the current URL as an array.</span><pre>_segmentArray()</pre></a></li>
+<li class="method protected "><a href="#method__segments" title="_segments :: Returns the the entire segment path if $search is false or
+looks for $search in the URL path and returns true / false."><span class="description">Returns the the entire segment path if $search is false or
+looks for $search in the URL path and returns true / false.</span><pre>_segments()</pre></a></li>
+<li class="method protected "><a href="#method__stripQueries" title="_stripQueries :: Strips the ENTIRE query string from the url."><span class="description">Strips the ENTIRE query string from the url.</span><pre>_stripQueries()</pre></a></li>
+<li class="method protected "><a href="#method__stripQuery" title='_stripQuery :: Strips a query called "$query" from the query string.'><span class="description">Strips a query called "$query" from the query string.</span><pre>_stripQuery()</pre></a></li>
+<li class="method protected "><a href="#method__stripSegment" title="_stripSegment :: Strips a segment called $s from the URI."><span class="description">Strips a segment called $s from the URI.</span><pre>_stripSegment()</pre></a></li>
+<li class="method protected "><a href="#method__stripSegments" title="_stripSegments :: Strips all segments from the URL"><span class="description">Strips all segments from the URL</span><pre>_stripSegments()</pre></a></li>
+<li class="method protected "><a href="#method__swapQuery" title="_swapQuery :: Renames a query parameter from $oldName to $newName"><span class="description">Renames a query parameter from $oldName to $newName</span><pre>_swapQuery()</pre></a></li>
+<li class="method protected "><a href="#method__swapSegment" title="_swapSegment :: Swaps segment names using $key =&gt; $value input where
+$oldname =&gt; $newname."><span class="description">Swaps segment names using $key =&gt; $value input where
+$oldname =&gt; $newname.</span><pre>_swapSegment()</pre></a></li>
+<li class="method protected "><a href="#method__to" title="_to :: Swaps the base URL the parser is operating on for the
+URL passed in $url."><span class="description">Swaps the base URL the parser is operating on for the
+URL passed in $url.</span><pre>_to()</pre></a></li>
+<li class="method protected "><a href="#method__user" title="_user :: Sets or returns the user for auth."><span class="description">Sets or returns the user for auth.</span><pre>_user()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_instance" title="$instance :: When calling methods statically the instance
+is stored in this variable."><span class="description"></span><pre>$instance</pre></a></li>
+<li class="property protected "><a href="#property_resetURL" title="$resetURL :: Same as $url but always contains a blank array,
+used by the _to() method to reset the current
+URL property when overwriting with a new
+base URL."><span class="description"></span><pre>$resetURL</pre></a></li>
+<li class="property protected "><a href="#property_url" title="$url :: The actively used URL in the format dictated by
+PHP's built-in parse_url function."><span class="description"></span><pre>$url</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\URLParser\URL"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/URLParser.html">URLParser</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/URLParser.URL.html">URL</a>
+</li>
+</ul>
+<div class="element class"><div class="details">
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___call"></a><div class="element clickable method public method___call" data-toggle="collapse" data-target=".method___call .collapse">
+<h2>__call()
+        </h2>
+<pre>__call($method, $arguments) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$method</h4></div>
+<div class="subelement argument"><h4>$arguments</h4></div>
+</div></div>
+</div>
+<a id="method___callStatic"></a><div class="element clickable method public method___callStatic" data-toggle="collapse" data-target=".method___callStatic .collapse">
+<h2>__callStatic()
+        </h2>
+<pre>__callStatic($method, $arguments) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$method</h4></div>
+<div class="subelement argument"><h4>$arguments</h4></div>
+</div></div>
+</div>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Base constructor, accepts a url or by default
+uses the current full URL of the page being
+visited.</h2>
+<pre>__construct(string $url) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$url</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__addQuery"></a><div class="element clickable method protected method__addQuery" data-toggle="collapse" data-target=".method__addQuery .collapse">
+<h2>Appends a $key =&gt; $value array into the URL's
+query string.</h2>
+<pre>_addQuery(array $query) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com');
+$url->addQuery(array(
+        'val1'      => 'stuff',
+        'val2'      => 'more stuff',
+));
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com?val1=stuff&amp;val2=more+stuff
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$query</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__anchor"></a><div class="element clickable method protected method__anchor" data-toggle="collapse" data-target=".method__anchor .collapse">
+<h2>Sets or returns the anchor tag at the end of the URL</h2>
+<pre>_anchor(string $anchor) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com');
+$url->anchor('products');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com/#products
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$anchor</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__appendSegment"></a><div class="element clickable method protected method__appendSegment" data-toggle="collapse" data-target=".method__appendSegment .collapse">
+<h2>Appends a specified text segment to the URL path.</h2>
+<pre>_appendSegment(string $newSegment, string $appendAfter) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Optionally
+a segment can be specified ($appendAfter) and the new segment
+will be inserted immediately following the instance of
+$appendAfter.</p>
+
+<p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/products/services');
+$url->appendSegment('test');
+echo $url->make() . "&lt;br/>";
+$url->appendSegment('argh','products');
+echo $url->make() . "&lt;br/>";</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com/products/services/test
+    http://www.powrit.com/products/argh/services/test
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$newSegment</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$appendAfter</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__currentURL"></a><div class="element clickable method protected method__currentURL" data-toggle="collapse" data-target=".method__currentURL .collapse">
+<h2>Parses and returns the full URL of the page
+currently being visited.</h2>
+<pre>_currentURL() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Used by the
+__construct method.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__host"></a><div class="element clickable method protected method__host" data-toggle="collapse" data-target=".method__host .collapse">
+<h2>Sets or returns the host (domain) for the url.</h2>
+<pre>_host(string $host) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url->host('www.google.ca');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.google.ca/stuff?val1=foo
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$host</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__make"></a><div class="element clickable method protected method__make" data-toggle="collapse" data-target=".method__make .collapse">
+<h2>_make()
+        </h2>
+<pre>_make() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method__pass"></a><div class="element clickable method protected method__pass" data-toggle="collapse" data-target=".method__pass .collapse">
+<h2>Sets or returns the password for auth.</h2>
+<pre>_pass(string $pass) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>User must be specified first.</p>
+
+<p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url->user('joe');
+$url->pass('foobar');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://joe:foobar@www.powrit.com/stuff?val1=foo
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$pass</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__port"></a><div class="element clickable method protected method__port" data-toggle="collapse" data-target=".method__port .collapse">
+<h2>Sets or returns the port for the url.</h2>
+<pre>_port(string $port) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url->port(8080);
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com:8080/stuff?val1=foo
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$port</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__prependSegment"></a><div class="element clickable method protected method__prependSegment" data-toggle="collapse" data-target=".method__prependSegment .collapse">
+<h2>Prepends a specified text segment to the URL path.</h2>
+<pre>_prependSegment(string $newSegment, string $prependBefore) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Optionally
+a segment can be specified ($prependBefore) and the new segment
+will be inserted immediately before the instance of
+$prependBefore.</p>
+
+<p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/products/services');
+$url->prependSegment('test');
+echo $url->make() . "&lt;br/>";
+$url->prependSegment('argh','products');
+echo $url->make() . "&lt;br/>";</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com/test/products/services
+    http://www.powrit.com/test/argh/products/services
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$newSegment</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$prependBefore</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__protocol"></a><div class="element clickable method protected method__protocol" data-toggle="collapse" data-target=".method__protocol .collapse">
+<h2>Sets or returns the protocol for the URL (http/ftp/etc.).</h2>
+<pre>_protocol(string $protocol) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com');
+$url->protocol('ftp');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    ftp://www.powrit.com
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$protocol</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__query"></a><div class="element clickable method protected method__query" data-toggle="collapse" data-target=".method__query .collapse">
+<h2>Returns the query string for the current URL or, if
+$query is specified returns the value for that parameter</h2>
+<pre>_query(string $query) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;val2=services');
+echo $url->query('val1') . "&lt;br/>";
+echo $url->query('val2') . "&lt;br/>";
+echo $url->query('val3') . "&lt;br/>";   // Returns FALSE
+echo $url->query() . "&lt;br/>";</p>
+
+<p>Outputs...</p>
+
+<pre><code>    products
+    services
+
+    val1=products&amp;val2=services
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$query</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method__queryArray"></a><div class="element clickable method protected method__queryArray" data-toggle="collapse" data-target=".method__queryArray .collapse">
+<h2>Returns the query string for the current URL as a $key =&gt; $value array.</h2>
+<pre>_queryArray() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;val2=services');
+var_dump($url->queryArray());</p>
+
+<p>Outputs...</p>
+
+<p>array(2) {
+    ["val1"]=>
+    string(8) "products"
+    ["val2"]=>
+    string(8) "services"
+}</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method__segmentArray"></a><div class="element clickable method protected method__segmentArray" data-toggle="collapse" data-target=".method__segmentArray .collapse">
+<h2>Returns the segments (path) string for the current URL as an array.</h2>
+<pre>_segmentArray() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/products/services');
+var_dump($url->segmentArray());</p>
+
+<p>Outputs...</p>
+
+<p>array(2) {
+    [0]=>
+    string(8) "products"
+    [1]=>
+    string(8) "services"
+}</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method__segments"></a><div class="element clickable method protected method__segments" data-toggle="collapse" data-target=".method__segments .collapse">
+<h2>Returns the the entire segment path if $search is false or
+looks for $search in the URL path and returns true / false.</h2>
+<pre>_segments(string $search) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/products/services');
+echo $url->segments('products') . "&lt;br/>";
+echo $url->segments('services') . "&lt;br/>";
+echo $url->segments('abcd') . "&lt;br/>";   // Returns FALSE
+echo $url->segments() . "&lt;br/>";</p>
+
+<p>Outputs...</p>
+
+<pre><code>    (true)
+    (true)
+    (false)
+    /products/services
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$search</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method__stripQueries"></a><div class="element clickable method protected method__stripQueries" data-toggle="collapse" data-target=".method__stripQueries .collapse">
+<h2>Strips the ENTIRE query string from the url.</h2>
+<pre>_stripQueries() : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;val2=services');
+$url->stripQueries();
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com
+</code></pre></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__stripQuery"></a><div class="element clickable method protected method__stripQuery" data-toggle="collapse" data-target=".method__stripQuery .collapse">
+<h2>Strips a query called "$query" from the query string.</h2>
+<pre>_stripQuery(string $query) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;val2=services');
+$url->stripQuery('val1');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com?val2=services
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$query</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__stripSegment"></a><div class="element clickable method protected method__stripSegment" data-toggle="collapse" data-target=".method__stripSegment .collapse">
+<h2>Strips a segment called $s from the URI.</h2>
+<pre>_stripSegment(string $s) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/products/services');
+$url->stripSegment('products');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com/services
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$s</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__stripSegments"></a><div class="element clickable method protected method__stripSegments" data-toggle="collapse" data-target=".method__stripSegments .collapse">
+<h2>Strips all segments from the URL</h2>
+<pre>_stripSegments() : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/products/services?val1=stuff&amp;val2=more+stuff');
+$url->stripSegments();
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com?val1=stuff&amp;val2=more+stuff
+</code></pre></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__swapQuery"></a><div class="element clickable method protected method__swapQuery" data-toggle="collapse" data-target=".method__swapQuery .collapse">
+<h2>Renames a query parameter from $oldName to $newName</h2>
+<pre>_swapQuery($oldName, $newName) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;val2=services');
+$url->swapQuery('val1','valX');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com?val2=services&amp;valX=products
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$oldName</h4></div>
+<div class="subelement argument"><h4>$newName</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__swapSegment"></a><div class="element clickable method protected method__swapSegment" data-toggle="collapse" data-target=".method__swapSegment .collapse">
+<h2>Swaps segment names using $key =&gt; $value input where
+$oldname =&gt; $newname.</h2>
+<pre>_swapSegment(array $newSegments) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/oldSegment/home');
+$url->swapSegments(array(
+        'oldSegment'    => 'newSegment',
+        'home'          => 'main',
+));
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.powrit.com/newSegment/main
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$newSegments</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__to"></a><div class="element clickable method protected method__to" data-toggle="collapse" data-target=".method__to .collapse">
+<h2>Swaps the base URL the parser is operating on for the
+URL passed in $url.</h2>
+<pre>_to(string $url) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This is useful for scenarios where
+you wish to batch add query strings to multiple URLs.
+You can setup the queries on one object and then _to()
+and _make() multiple calls to generate new URLs.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$url</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
+<a id="method__user"></a><div class="element clickable method protected method__user" data-toggle="collapse" data-target=".method__user .collapse">
+<h2>Sets or returns the user for auth.</h2>
+<pre>_user(string $user) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url->user('joe');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://joe@www.powrit.com/stuff?val1=foo
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_instance"> </a><div class="element clickable property protected property_instance" data-toggle="collapse" data-target=".property_instance .collapse">
+<h2></h2>
+<pre>$instance : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_resetURL"> </a><div class="element clickable property protected property_resetURL" data-toggle="collapse" data-target=".property_resetURL .collapse">
+<h2></h2>
+<pre>$resetURL : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_url"> </a><div class="element clickable property protected property_url" data-toggle="collapse" data-target=".property_url .collapse">
+<h2></h2>
+<pre>$url : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"><p>This is the
+property which is actively used and modified
+throughout the functions of this class.</p></div></div></div>
+</div>
+</div></div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2012-11-25T11:26:16-05:00.<br></footer></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a12" title="">
+  <file path="batch.php" hash="455426a419d00913fc1ccc01400d827a" package="Default">
+    <namespace-alias name="URL">URLParser\URL</namespace-alias>
+    <class final="false" abstract="false" namespace="URLParser" line="6" package="Default">
+      <extends/>
+      <name>Batch</name>
+      <full_name>\URLParser\Batch</full_name>
+      <property final="false" static="false" visibility="protected" line="13" namespace="URLParser" package="Default">
+        <name>$urls</name>
+        <default>array()</default>
+        <docblock line="8">
+          <description>The actively used URLParser\URL objects.</description>
+          <long-description></long-description>
+          <tag line="8" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="true" visibility="protected" line="21" namespace="URLParser" package="Default">
+        <name>$instance</name>
+        <default>false</default>
+        <docblock line="15">
+          <description>When calling methods statically the instance
+is stored in this variable.</description>
+          <long-description></long-description>
+          <tag line="15" name="var" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="URLParser" line="31" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="23">
+          <description>Base constructor, accepts a url and by default
+uses the current full URL of the page being
+visited.</description>
+          <long-description></long-description>
+          <tag line="23" name="param" description="" type="string" variable="$url">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="23" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="31">
+          <name>$urls</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="39" package="Default">
+        <name>_make</name>
+        <full_name>_make</full_name>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="54" package="Default">
+        <name>_to</name>
+        <full_name>_to</full_name>
+        <docblock line="47">
+          <description>Loops through the provided array and establishes new URL
+objects from each URL.</description>
+          <long-description></long-description>
+          <tag line="47" name="param" description="" type="array" variable="$urls">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="47" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="54">
+          <name>$urls</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="URLParser" line="70" package="Default">
+        <name>__callStatic</name>
+        <full_name>__callStatic</full_name>
+        <argument line="70">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="70">
+          <name>$arguments</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="URLParser" line="81" package="Default">
+        <name>__call</name>
+        <full_name>__call</full_name>
+        <argument line="81">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="81">
+          <name>$arguments</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file batch.php</error>
+      <error line="6" code="50000">No DocBlock was found for \URLParser\Batch</error>
+      <error line="23" code="50014">Name of argument $urls does not match with the DocBlock's name $url in __construct()</error>
+      <notice line="23" code="50013">Parameter $url could not be found in __construct()</notice>
+      <error line="39" code="50010">No DocBlock was found for method _make()</error>
+      <error line="70" code="50010">No DocBlock was found for method __callStatic()</error>
+      <error line="81" code="50010">No DocBlock was found for method __call()</error>
+    </parse_markers>
+  </file>
+  <file path="url.php" hash="9fd8b0a6be728ff07e562195977825f0" package="Default">
+    <class final="false" abstract="false" namespace="URLParser" line="5" package="Default">
+      <extends/>
+      <name>URL</name>
+      <full_name>\URLParser\URL</full_name>
+      <property final="false" static="false" visibility="protected" line="15" namespace="URLParser" package="Default">
+        <name>$url</name>
+        <default>array('scheme' =&gt; 'http', 'host' =&gt; '', 'port' =&gt; false, 'user' =&gt; '', 'pass' =&gt; '', 'path' =&gt; '', 'query' =&gt; '', 'fragment' =&gt; '')</default>
+        <docblock line="7">
+          <description>The actively used URL in the format dictated by
+PHP's built-in parse_url function.</description>
+          <long-description>&lt;p&gt;This is the
+property which is actively used and modified
+throughout the functions of this class.&lt;/p&gt;</long-description>
+          <tag line="7" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="34" namespace="URLParser" package="Default">
+        <name>$resetURL</name>
+        <default>array('scheme' =&gt; 'http', 'host' =&gt; '', 'port' =&gt; false, 'user' =&gt; '', 'pass' =&gt; '', 'path' =&gt; '', 'query' =&gt; '', 'fragment' =&gt; '')</default>
+        <docblock line="26">
+          <description>Same as $url but always contains a blank array,
+used by the _to() method to reset the current
+URL property when overwriting with a new
+base URL.</description>
+          <long-description></long-description>
+          <tag line="26" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="true" visibility="protected" line="51" namespace="URLParser" package="Default">
+        <name>$instance</name>
+        <default>false</default>
+        <docblock line="45">
+          <description>When calling methods statically the instance
+is stored in this variable.</description>
+          <long-description></long-description>
+          <tag line="45" name="var" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="URLParser" line="61" package="Default">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="53">
+          <description>Base constructor, accepts a url or by default
+uses the current full URL of the page being
+visited.</description>
+          <long-description></long-description>
+          <tag line="53" name="param" description="" type="string" variable="$url">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="53" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="61">
+          <name>$url</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="75" package="Default">
+        <name>_currentURL</name>
+        <full_name>_currentURL</full_name>
+        <docblock line="68">
+          <description>Parses and returns the full URL of the page
+currently being visited.</description>
+          <long-description>&lt;p&gt;Used by the
+__construct method.&lt;/p&gt;</long-description>
+          <tag line="68" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="99" package="Default">
+        <name>_to</name>
+        <full_name>_to</full_name>
+        <docblock line="89">
+          <description>Swaps the base URL the parser is operating on for the
+URL passed in $url.</description>
+          <long-description>&lt;p&gt;This is useful for scenarios where
+you wish to batch add query strings to multiple URLs.
+You can setup the queries on one object and then _to()
+and _make() multiple calls to generate new URLs.&lt;/p&gt;</long-description>
+          <tag line="89" name="param" description="" type="string" variable="$url">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="89" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="99">
+          <name>$url</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="127" package="Default">
+        <name>_queryArray</name>
+        <full_name>_queryArray</full_name>
+        <docblock line="108">
+          <description>Returns the query string for the current URL as a $key =&gt; $value array.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;amp;val2=services');
+var_dump($url-&gt;queryArray());&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;p&gt;array(2) {
+    ["val1"]=&gt;
+    string(8) "products"
+    ["val2"]=&gt;
+    string(8) "services"
+}&lt;/p&gt;</long-description>
+          <tag line="108" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="156" package="Default">
+        <name>_query</name>
+        <full_name>_query</full_name>
+        <docblock line="134">
+          <description>Returns the query string for the current URL or, if
+$query is specified returns the value for that parameter</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;amp;val2=services');
+echo $url-&gt;query('val1') . "&amp;lt;br/&gt;";
+echo $url-&gt;query('val2') . "&amp;lt;br/&gt;";
+echo $url-&gt;query('val3') . "&amp;lt;br/&gt;";   // Returns FALSE
+echo $url-&gt;query() . "&amp;lt;br/&gt;";&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    products
+    services
+
+    val1=products&amp;amp;val2=services
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="134" name="param" description="" type="string" variable="$query">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="134" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="156">
+          <name>$query</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="189" package="Default">
+        <name>_addQuery</name>
+        <full_name>_addQuery</full_name>
+        <docblock line="169">
+          <description>Appends a $key =&gt; $value array into the URL's
+query string.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com');
+$url-&gt;addQuery(array(
+        'val1'      =&gt; 'stuff',
+        'val2'      =&gt; 'more stuff',
+));
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com?val1=stuff&amp;amp;val2=more+stuff
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="169" name="param" description="" type="array" variable="$query">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="169" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="189">
+          <name>$query</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="212" package="Default">
+        <name>_stripQuery</name>
+        <full_name>_stripQuery</full_name>
+        <docblock line="196">
+          <description>Strips a query called "$query" from the query string.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;amp;val2=services');
+$url-&gt;stripQuery('val1');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com?val2=services
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="196" name="param" description="" type="string" variable="$query">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="196" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="212">
+          <name>$query</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="236" package="Default">
+        <name>_stripQueries</name>
+        <full_name>_stripQueries</full_name>
+        <docblock line="221">
+          <description>Strips the ENTIRE query string from the url.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;amp;val2=services');
+$url-&gt;stripQueries();
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="221" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="259" package="Default">
+        <name>_swapQuery</name>
+        <full_name>_swapQuery</full_name>
+        <docblock line="242">
+          <description>Renames a query parameter from $oldName to $newName</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com?val1=products&amp;amp;val2=services');
+$url-&gt;swapQuery('val1','valX');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com?val2=services&amp;amp;valX=products
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="242" name="param" description="" type="string" variable="$old">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="242" name="param" description="" type="string" variable="$new">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="242" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="259">
+          <name>$oldName</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="259">
+          <name>$newName</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="287" package="Default">
+        <name>_segmentArray</name>
+        <full_name>_segmentArray</full_name>
+        <docblock line="268">
+          <description>Returns the segments (path) string for the current URL as an array.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/products/services');
+var_dump($url-&gt;segmentArray());&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;p&gt;array(2) {
+    [0]=&gt;
+    string(8) "products"
+    [1]=&gt;
+    string(8) "services"
+}&lt;/p&gt;</long-description>
+          <tag line="268" name="return" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="315" package="Default">
+        <name>_segments</name>
+        <full_name>_segments</full_name>
+        <docblock line="293">
+          <description>Returns the the entire segment path if $search is false or
+looks for $search in the URL path and returns true / false.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/products/services');
+echo $url-&gt;segments('products') . "&amp;lt;br/&gt;";
+echo $url-&gt;segments('services') . "&amp;lt;br/&gt;";
+echo $url-&gt;segments('abcd') . "&amp;lt;br/&gt;";   // Returns FALSE
+echo $url-&gt;segments() . "&amp;lt;br/&gt;";&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    (true)
+    (true)
+    (false)
+    /products/services
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="293" name="param" description="" type="string" variable="$search">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="293" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="315">
+          <name>$search</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="350" package="Default">
+        <name>_appendSegment</name>
+        <full_name>_appendSegment</full_name>
+        <docblock line="327">
+          <description>Appends a specified text segment to the URL path.</description>
+          <long-description>&lt;p&gt;Optionally
+a segment can be specified ($appendAfter) and the new segment
+will be inserted immediately following the instance of
+$appendAfter.&lt;/p&gt;
+
+&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/products/services');
+$url-&gt;appendSegment('test');
+echo $url-&gt;make() . "&amp;lt;br/&gt;";
+$url-&gt;appendSegment('argh','products');
+echo $url-&gt;make() . "&amp;lt;br/&gt;";&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com/products/services/test
+    http://www.powrit.com/products/argh/services/test
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="327" name="param" description="" type="string" variable="$newSegment">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="327" name="param" description="" type="string" variable="$appendAfter">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="327" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="350">
+          <name>$newSegment</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="350">
+          <name>$appendAfter</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="396" package="Default">
+        <name>_prependSegment</name>
+        <full_name>_prependSegment</full_name>
+        <docblock line="373">
+          <description>Prepends a specified text segment to the URL path.</description>
+          <long-description>&lt;p&gt;Optionally
+a segment can be specified ($prependBefore) and the new segment
+will be inserted immediately before the instance of
+$prependBefore.&lt;/p&gt;
+
+&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/products/services');
+$url-&gt;prependSegment('test');
+echo $url-&gt;make() . "&amp;lt;br/&gt;";
+$url-&gt;prependSegment('argh','products');
+echo $url-&gt;make() . "&amp;lt;br/&gt;";&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com/test/products/services
+    http://www.powrit.com/test/argh/products/services
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="373" name="param" description="" type="string" variable="$newSegment">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="373" name="param" description="" type="string" variable="$prependBefore">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="373" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="396">
+          <name>$newSegment</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="396">
+          <name>$prependBefore</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="435" package="Default">
+        <name>_stripSegment</name>
+        <full_name>_stripSegment</full_name>
+        <docblock line="419">
+          <description>Strips a segment called $s from the URI.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/products/services');
+$url-&gt;stripSegment('products');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com/services
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="419" name="param" description="" type="string" variable="$s">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="419" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="435">
+          <name>$s</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="461" package="Default">
+        <name>_stripSegments</name>
+        <full_name>_stripSegments</full_name>
+        <docblock line="446">
+          <description>Strips all segments from the URL</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/products/services?val1=stuff&amp;amp;val2=more+stuff');
+$url-&gt;stripSegments();
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com?val1=stuff&amp;amp;val2=more+stuff
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="446" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="487" package="Default">
+        <name>_swapSegment</name>
+        <full_name>_swapSegment</full_name>
+        <docblock line="467">
+          <description>Swaps segment names using $key =&gt; $value input where
+$oldname =&gt; $newname.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/oldSegment/home');
+$url-&gt;swapSegments(array(
+        'oldSegment'    =&gt; 'newSegment',
+        'home'          =&gt; 'main',
+));
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com/newSegment/main
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="467" name="param" description="" type="array" variable="$newSegments">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="467" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="487">
+          <name>$newSegments</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="517" package="Default">
+        <name>_anchor</name>
+        <full_name>_anchor</full_name>
+        <docblock line="501">
+          <description>Sets or returns the anchor tag at the end of the URL</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com');
+$url-&gt;anchor('products');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com/#products
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="501" name="param" description="" type="string" variable="$anchor">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="501" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="517">
+          <name>$anchor</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="540" package="Default">
+        <name>_protocol</name>
+        <full_name>_protocol</full_name>
+        <docblock line="524">
+          <description>Sets or returns the protocol for the URL (http/ftp/etc.).</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com');
+$url-&gt;protocol('ftp');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    ftp://www.powrit.com
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="524" name="param" description="" type="string" variable="$protocol">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="524" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="540">
+          <name>$protocol</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="563" package="Default">
+        <name>_host</name>
+        <full_name>_host</full_name>
+        <docblock line="547">
+          <description>Sets or returns the host (domain) for the url.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url-&gt;host('www.google.ca');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.google.ca/stuff?val1=foo
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="547" name="param" description="" type="string" variable="$host">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="547" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="563">
+          <name>$host</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="586" package="Default">
+        <name>_port</name>
+        <full_name>_port</full_name>
+        <docblock line="570">
+          <description>Sets or returns the port for the url.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url-&gt;port(8080);
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.powrit.com:8080/stuff?val1=foo
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="570" name="param" description="" type="string" variable="$port">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="570" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="586">
+          <name>$port</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="609" package="Default">
+        <name>_user</name>
+        <full_name>_user</full_name>
+        <docblock line="593">
+          <description>Sets or returns the user for auth.</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url-&gt;user('joe');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://joe@www.powrit.com/stuff?val1=foo
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="593" name="param" description="" type="string" variable="$user">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="593" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="609">
+          <name>$user</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="633" package="Default">
+        <name>_pass</name>
+        <full_name>_pass</full_name>
+        <docblock line="616">
+          <description>Sets or returns the password for auth.</description>
+          <long-description>&lt;p&gt;User must be specified first.&lt;/p&gt;
+
+&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+$url-&gt;user('joe');
+$url-&gt;pass('foobar');
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://joe:foobar@www.powrit.com/stuff?val1=foo
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="616" name="param" description="" type="string" variable="$pass">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="616" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+        </docblock>
+        <argument line="633">
+          <name>$pass</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="URLParser" line="645" package="Default">
+        <name>_make</name>
+        <full_name>_make</full_name>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="URLParser" line="669" package="Default">
+        <name>__callStatic</name>
+        <full_name>__callStatic</full_name>
+        <argument line="669">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="669">
+          <name>$arguments</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="URLParser" line="677" package="Default">
+        <name>__call</name>
+        <full_name>__call</full_name>
+        <argument line="677">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="677">
+          <name>$arguments</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="50007">No page-level DocBlock was found in file url.php</error>
+      <error line="5" code="50000">No DocBlock was found for \URLParser\URL</error>
+      <error line="242" code="50014">Name of argument $oldName does not match with the DocBlock's name $old in _swapQuery()</error>
+      <error line="242" code="50014">Name of argument $newName does not match with the DocBlock's name $new in _swapQuery()</error>
+      <notice line="242" code="50013">Parameter $old could not be found in _swapQuery()</notice>
+      <notice line="242" code="50013">Parameter $new could not be found in _swapQuery()</notice>
+      <error line="645" code="50010">No DocBlock was found for method _make()</error>
+      <error line="669" code="50010">No DocBlock was found for method __callStatic()</error>
+      <error line="677" code="50010">No DocBlock was found for method __call()</error>
+    </parse_markers>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <namespace name="URLParser" full_name="URLParser"/>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>
