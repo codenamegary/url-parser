@@ -41,14 +41,6 @@ class URL {
 	);
 	
 	/**
-	 * When calling methods statically the instance
-	 * is stored in this variable.
-	 * 
-	 * @var object
-	 */
-	protected static $instance = false;
-	
-	/**
 	 * Base constructor, accepts a url or by default
 	 * uses the current full URL of the page being
 	 * visited.
