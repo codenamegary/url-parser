@@ -52,7 +52,7 @@ class URL {
 	{
 		// Call the _to method with either the full current page url
 		// (when $url is false) or the value of $url
-		return $this->_to(($url == false) ? $this->_currentURL() : $url );
+		return $this->_to( ( $url == false ) ? $this->currentURL() : $url );
 	}
 
 	/**
