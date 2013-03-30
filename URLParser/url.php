@@ -1,6 +1,4 @@
-<?php
-
-namespace URLParser;
+<?php namespace URLParser;
 
 class URL {
 
@@ -72,18 +70,15 @@ class URL {
 	 * 
 	 * @return	string
 	 */
-	protected function _currentURL()
+	protected function currentURL()
 	{
-		if(!isset($_SERVER['REQUEST_URI'])){
-			$serverrequri = $_SERVER['PHP_SELF'];
-		}else{
-			$serverrequri =    $_SERVER['REQUEST_URI'];
-		}
-	    $s = empty($_SERVER["HTTPS"]) ? '' : ($_SERVER["HTTPS"] == "on") ? "s" : "";
-	    $protocol = explode("/",$_SERVER["SERVER_PROTOCOL"]);
-		$protocol = strtolower($protocol[0]).strtolower($s);
-	    $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
-	    return $protocol."://".$_SERVER['HTTP_HOST'].$port.$serverrequri;   
+		if( !isset( $_SERVER['REQUEST_URI'] ) )	$requestUri = $_SERVER['PHP_SELF'];
+		else $requestUri = $_SERVER['REQUEST_URI'];
+		$s = empty( $_SERVER["HTTPS"] ) ? '' : ( $_SERVER["HTTPS"] == "on" ) ? "s" : "";
+		$protocol = explode( "/", $_SERVER["SERVER_PROTOCOL"] );
+		$protocol = strtolower( $protocol[0] ) . strtolower( $s );
+		$port = ( $_SERVER["SERVER_PORT"] == "80" ) ? "" : ( ":" . $_SERVER["SERVER_PORT"] );
+		return $protocol . "://" . $_SERVER['HTTP_HOST'] . $port.$requestUri;
 	}
 
 	/**
@@ -96,10 +91,10 @@ class URL {
 	 * @param	string	$url
 	 * @return	object
 	 */
-	protected function _to( $url = false)
+	public function to( $url = false)
 	{
 		// If nothing is passed just return the current instance
-		if($url == false) return $this;
+		if( $url == false ) return $this;
 		$this->url = array_merge( $this->resetURL, parse_url( $url ) );
 		// Method chaining
 		return $this;
@@ -110,7 +105,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com?val1=products&val2=services');
+	 * $url = new URLParser\URL('http://www.example.com?val1=products&val2=services');
 	 * var_dump($url->queryArray());
 	 * 
 	 * Outputs...
@@ -124,7 +119,7 @@ class URL {
 	 *  
 	 * @return	array
 	 */
-	protected function _queryArray()
+	public function queryArray()
 	{
 		parse_str( $this->url['query'], $q );
 		return $q;
@@ -137,7 +132,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com?val1=products&val2=services');
+	 * $url = new URLParser\URL('http://www.example.com?val1=products&val2=services');
 	 * echo $url->query('val1') . "<br/>";
 	 * echo $url->query('val2') . "<br/>";
 	 * echo $url->query('val3') . "<br/>";   // Returns FALSE
@@ -153,17 +148,17 @@ class URL {
 	 * @param	string	$query
 	 * @return	string
 	 */
-	protected function _query( $query = false )
+	public function query( $query = false )
 	{
 		// Splits the query parameter ($_GET vars) of the base URL
 		// into a $key => $value array and stores in $q
 		parse_str( $this->url['query'], $q );
 
 		// Make and return the query string if $query == false
-		if($query == false) return http_build_query($q);
+		if( $query == false ) return http_build_query( $q );
 		
 		// Return false or the query val if it does exist
-		return isset($q[$query]) ? $q[$query] : false ;
+		return isset( $q[$query] ) ? $q[$query] : false ;
 	}
 			
 	/**
@@ -172,7 +167,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com');
+	 * $url = new URLParser\URL('http://www.example.com');
 	 * $url->addQuery(array(
 	 * 		'val1'		=> 'stuff',
 	 * 		'val2'		=> 'more stuff',
@@ -181,14 +176,14 @@ class URL {
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com?val1=stuff&val2=more+stuff
+	 * 		http://www.example.com?val1=stuff&val2=more+stuff
 	 * 
 	 * @param	array	$query
 	 * @return	object
 	 */
-	protected function _addQuery( $query = array() )
+	public function addQuery( $query = array() )
 	{
-		$q = array_merge( $this->_queryArray(), $query );
+		$q = array_merge( $this->queryArray(), $query );
 		$this->url['query'] = http_build_query( $q );
 		return $this;
 	}
@@ -198,20 +193,20 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com?val1=products&val2=services');
+	 * $url = new URLParser\URL('http://www.example.com?val1=products&val2=services');
 	 * $url->stripQuery('val1');
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com?val2=services
+	 * 		http://www.example.com?val2=services
 	 * 
 	 * @param	string	$query
 	 * @return	object
 	 */
-	protected function _stripQuery( $query )
+	public function stripQuery( $query )
 	{
-		$queries = $this->_queryArray();
+		$queries = $this->queryArray();
 		foreach( $queries as $key => $q )
 			if( $key == $query ) unset( $queries[$key] );
 		$this->url['query'] = http_build_query( $queries );
@@ -223,17 +218,17 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com?val1=products&val2=services');
+	 * $url = new URLParser\URL('http://www.example.com?val1=products&val2=services');
 	 * $url->stripQueries();
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com
+	 * 		http://www.example.com
 	 * 
 	 * @return	object
 	 */
-	protected function _stripQueries()
+	public function stripQueries()
 	{
 		$this->url['query'] = '';
 		return $this;
@@ -244,25 +239,84 @@ class URL {
 	 *
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com?val1=products&val2=services');
+	 * $url = new URLParser\URL('http://www.example.com?val1=products&val2=services');
 	 * $url->swapQuery('val1','valX');
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com?val2=services&valX=products
+	 * 		http://www.example.com?val2=services&valX=products
 	 *  
 	 * @param	string	$old
 	 * @param	string	$new
 	 * @return	object
 	 */
-	protected function _swapQuery( $oldName, $newName )
+	public function swapQuery( $oldName, $newName )
 	{
-		$queries = $this->_queryArray();
-		foreach( $queries as $key => $q )
-			if( $key == $oldName ) { unset( $queries[$key] ); $queries[$newName] = $q; }
+		$queries = $this->renameArrayKey( $this->queryArray(), $oldName, $newName );
 		$this->url['query'] = http_build_query( $queries );
 		return $this;
+	}
+
+	/**
+	 * Lookups up $oldKey in $array and renames the key to $newKey
+	 * 
+	 * eg...
+	 * 
+	 * $arr = array(
+	 * 		'foo'		=> 'bar',
+	 * 		'foo2'		=> 'bar2',
+	 * );
+	 * 
+	 * $arr = $this->renameArrayKey( $arr, 'foo', 'test' );
+	 * 
+	 * returns...
+	 * 
+	 * array(
+	 * 		'test'		=> 'bar',
+	 * 		'foo2'		=> 'bar2',
+	 * )
+	 * 
+	 * @param	array 	$array
+	 * @param	string	$oldKey
+	 * @param	string	$newKey
+	 * @return	array
+	 */
+	protected function renameArrayKey( $array = array(), $oldKey, $newKey )
+	{
+		// If oldKey isn't set just return the passed array, unmodified
+		if( !isset( $array[$oldKey] ) ) return $array;
+		$keys = array_keys( $array );
+		$keys[$oldKey] = $newKey;
+		return array_combine( $keys, array_values( $array ) );
+	}
+	
+	/**
+	 * Plural of renameArrayKey, allows passing of oldKey => newKey as an array.
+	 * 
+	 * eg...
+	 * 
+	 * $arr = array(
+	 * 		'foo'		=> 'bar',
+	 * 		'foo2'		=> 'bar2',
+	 * );
+	 * 
+	 * $arr = $this->renameArrayKey( $arr, array( 'foo' => 'test' ) );
+	 * 
+	 * returns...
+	 * 
+	 * array(
+	 * 		'test'		=> 'bar',
+	 * 		'foo2'		=> 'bar2',
+	 * )
+	 * 
+	 * @param	array 	$array
+	 * @param	array	$newKeys
+	 * @return	array
+	 */
+	protected function renameArrayKeys( $array = array(), $newKeys )
+	{
+		foreach( $newKeys as $oldKey => $newKey ) $array = $this->renameArrayKey( $oldKey, $newKey );
 	}
 
 	/**
@@ -270,7 +324,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/products/services');
+	 * $url = new URLParser\URL('http://www.example.com/products/services');
 	 * var_dump($url->segmentArray());
 	 * 
 	 * Outputs...
@@ -284,9 +338,9 @@ class URL {
 	 *  
 	 * @return	array
 	 */
-	protected function _segmentArray()
+	public function segmentArray()
 	{
-		if(substr($this->url['path'], 0,1)=="/") $this->url['path'] = substr($this->url['path'],1);
+		if( substr( $this->url['path'], 0, 1 ) == "/" ) $this->url['path'] = substr($this->url['path'], 1 );
 		return explode( "/", $this->url['path'] );
 	}
 	
@@ -296,7 +350,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/products/services');
+	 * $url = new URLParser\URL('http://www.example.com/products/services');
 	 * echo $url->segments('products') . "<br/>";
 	 * echo $url->segments('services') . "<br/>";
 	 * echo $url->segments('abcd') . "<br/>";   // Returns FALSE
@@ -312,18 +366,335 @@ class URL {
 	 * @param	string	$search
 	 * @return	mixed
 	 */
-	protected function _segments( $search = false )
+	public function segments( $search = false )
 	{
 		// If we're searching for a segment, find it and return true or false
-		if(!$search == false && in_array($search, $this->_segmentArray())) return true;
-		if(!$search == false && !in_array($search, $this->_segmentArray())) return false;
+		if( !$search == false && in_array( $search, $this->segmentArray() ) ) return true;
+		if( !$search == false && !in_array( $search, $this->segmentArray() ) ) return false;
 
-		$segments = count($this->_segmentArray()) > 0 ? "/" . implode("/",$this->_segmentArray()) : '';
+		$segments = count( $this->segmentArray() ) > 0 ? "/" . implode( "/", $this->segmentArray() ) : '';
 		
 		// If we're not searching just return the segment string
-		if($search == false) return $segments;
+		if( $search == false ) return $segments;
 	}
 	
+	/**
+	 * Takes an array and returns an array of 2 arrays.
+	 * 
+	 * - One array including everything BEFORE the specified key
+	 * - Another array INCLUDING the specified key and everything AFTER
+	 * 
+	 * Optionally specify "$offset" to indicate that the slice should occur AFTER
+	 * $offset keys, meaning the function will return...
+	 * 
+	 * - One array including everything up to and INCLUDING the specified key
+	 *   plus $offset keys later
+	 * - Another array including everything AFTER the specified key plus $offset keys
+	 * 
+	 * In the case that $key does not exist or is not specified the function will
+	 * still return 2 arrays. If $offset is not specified or is less than 0 (prepend mode),
+	 * the returned array at index 0 will contain a blank array and index 1 will contain
+	 * all of the elements from the original array. If $offset is specified and is
+	 * greater than 0 (append mode) index 0 will contain all of the elements from the
+	 * original array and index 1 will contain a blank array.
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 1:
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * Note: $offset not specificed (0) means the function operates in "prepend" mode
+	 * 
+	 * $arr = $this->sliceArrayAtKey( $arr, 'key2' );
+	 * 
+	 * returns....
+	 * 
+	 * array(
+	 * 		[0]			=> array(
+	 * 			'key1'		=> 'val1',
+	 * 		),
+	 * 		[1]			=> array(
+	 * 			'key2'		=> 'val2',
+	 *	 		'key3'		=> 'val3',
+	 * 			'key4'		=> 'val4',
+	 * 			'key5'		=> 'val5',
+	 * 		),
+	 * )
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 2:
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * Note: $offset > 0 (1) means the function operates in "append" mode
+	 * 
+	 * $arr = $this->sliceArrayAtKey( $arr, 'key2', 1 );
+	 * 
+	 * returns....
+	 * 
+	 * array(
+	 * 		[0]			=> array(
+	 * 			'key1'		=> 'val1',
+	 * 			'key2'		=> 'val2',
+	 * 		),
+	 * 		[1]			=> array(
+	 *	 		'key3'		=> 'val3',
+	 * 			'key4'		=> 'val4',
+	 * 			'key5'		=> 'val5',
+	 * 		),
+	 * )
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 3:
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * $arr = $this->sliceArrayAtKey( $arr, 'key2', 3 );
+	 * 
+	 * returns....
+	 * 
+	 * array(
+	 * 		[0]			=> array(
+	 * 			'key1'		=> 'val1',
+	 * 			'key2'		=> 'val2',
+	 * 			'key3'		=> 'val3',
+	 * 			'key4'		=> 'val4',
+	 * 		),
+	 * 		[1]			=> array(
+	 * 			'key5'		=> 'val5',
+	 * 		),
+	 * )
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 4:
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * $arr = $this->sliceArrayAtKey( $arr, 'key2', -1 );
+	 * 
+	 * returns....
+	 * 
+	 * array(
+	 * 		[0]			=> array(
+	 * 		),
+	 * 		[1]
+	 * 			'key1'		=> 'val1',
+	 * 			'key2'		=> 'val2',
+	 * 			'key3'		=> 'val3',
+	 * 			'key3'		=> 'val4',
+	 * 			'key5'		=> 'val5',
+	 * 		),
+	 * )
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 5:
+	 * 
+	 * Note: $offset is not specified and the function defaults to "prepend" mode, $key
+	 * 		 does not exist.
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * $arr = $this->sliceArrayAtKey( $arr, 'key6' );
+	 * 
+	 * returns....
+	 * array(
+	 * 		[0]			=> array(
+	 * 		),
+	 * 		[1]
+	 * 			'key1'		=> 'val1',
+	 * 			'key2'		=> 'val2',
+	 * 			'key3'		=> 'val3',
+	 * 			'key3'		=> 'val4',
+	 * 			'key5'		=> 'val5',
+	 * 		),
+	 * )
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 6:
+	 * 
+	 * Note: $offset is 1 and the function defaults to "append" mode, $key does not exist
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * $arr = $this->sliceArrayAtKey( $arr, 'key6', 1 );
+	 * 
+	 * returns....
+	 * array(
+	 * 		[0]			=> array(
+	 * 			'key1'		=> 'val1',
+	 * 			'key2'		=> 'val2',
+	 * 			'key3'		=> 'val3',
+	 * 			'key3'		=> 'val4',
+	 * 			'key5'		=> 'val5',
+	 * 		),
+	 * 		[1]
+	 * 		),
+	 * )
+	 * 
+	 * @param	array	$array
+	 * @param	string	$key
+	 * @param	boolean	$after
+	 * @return	array
+	 */
+	protected function sliceArrayAtKey( $array, $key = false, $offset = 0 )
+	{
+		$arrStart = ( $offset > 0 ) ? $array : array() ;
+		$arrEnd = ( $offset <= 0 ) ? $array : array() ;
+		$arrKeys = array_keys( $array );
+		$key = $key ? array_search( $key, $arrKeys ) : false ;
+		if( $key !== false )
+		{
+			$arrStart = array_slice( $array, 0, $key + $offset );
+			$arrEnd = array_slice( $array, $key + $offset );
+		}
+		$array = array(
+			$arrStart,
+			$arrEnd,
+		);
+		return $array;
+	}
+	
+	
+	
+	/*
+	 * ----------------------------------------------------------------------------------
+	 * 		See the documentation and examples on sliceArrayAtKey for additional info
+	 * 		on how $array is sliced and processed.
+	 * ----------------------------------------------------------------------------------
+	 * 
+	 * Takes $array, $key, and an array of $newKeyValuePairs and splices
+	 * them into $array at the location of $key. Optionally takes a $offset
+	 * and inserts at (position of $key) + $offset.
+	 * 
+	 * You may specify a negative value for $offset to insert at previous $offset
+	 * number keys.
+	 * 
+	 * Note: $offset is used to determine prepend vs. append mode (see docs and
+	 * examples on sliceArrayAtKey for additional info).
+	 * 
+	 * If $key does not exist and $offset is less than or equal to 0
+	 * $newKeyValuePairs will be prepended to $array.
+	 * 
+	 * If $key does not exist and $offset is greater than 0 $newKeyValuePairs will
+	 * be appended to $array. 
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 1:
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * $newKeyValuePairs = arrray(
+	 * 		'keyX'		=> 'valX',
+	 * 		'keyY'		=> 'valY',
+	 * );
+	 * 
+	 * Note: $offset is not specified and function defaults to "prepend" mode
+	 * 
+	 * $arr = $this->insertIntoArrayAtKey( $arr, 'key2', $newKeyValuePairs );
+	 * 
+	 * returns....
+	 * 
+	 * array(
+	 *		'key1'		=> 'val1',
+	 * 		'keyX'		=> 'valX',	<--- New values inserted BEFORE key2
+	 * 		'keyY'		=> 'valY',	<--- New values inserted BEFORE key2
+	 *		'key2'		=> 'val2',
+	 *		'key3'		=> 'val3',
+	 *		'key4'		=> 'val4',
+	 *		'key5'		=> 'val5',
+	 * )
+	 * 
+	 * 
+	 * 
+	 * ----------------------------------------------------------------------------------
+	 * Example 2:
+	 * 
+	 * $arr = array(
+	 * 		'key1'		=> 'val1',
+	 * 		'key2'		=> 'val2',
+	 * 		'key3'		=> 'val3',
+	 * 		'key4'		=> 'val4',
+	 * 		'key5'		=> 'val5',
+	 * );
+	 * 
+	 * $newKeyValuePairs = arrray(
+	 * 		'keyX'		=> 'valX',
+	 * 		'keyY'		=> 'valY',
+	 * );
+	 * 
+	 * Note: $offset is specified as 1 and function defaults to "append" mode
+	 * 
+	 * $arr = $this->insertIntoArrayAtKey( $arr, 'key2', $newKeyValuePairs, 1 );
+	 * 
+	 * returns....
+	 * 
+	 * array(
+	 *		'key1'		=> 'val1',
+	 *		'key2'		=> 'val2',
+	 * 		'keyX'		=> 'valX',	<--- New values inserted AFTER key2
+	 * 		'keyY'		=> 'valY',	<--- New values inserted AFTER key2
+ 	 *		'key3'		=> 'val3',
+	 *		'key4'		=> 'val4',
+	 *		'key5'		=> 'val5',
+	 * )
+	 * 
+	 */
+	protected function insertIntoArrayAtKey( $array, $key, $newKeyValuePairs, $offset = 0 )
+	{
+		$slices = $this->sliceArrayAtKey( $array, $key, $offset );
+		if( !$slices ) return false;
+		return array_merge( $slices[0], $newKeyValuePairs, $slices[1] );
+	}
+
 	/**
 	 * Appends a specified text segment to the URL path. Optionally
 	 * a segment can be specified ($appendAfter) and the new segment
@@ -332,7 +703,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/products/services');
+	 * $url = new URLParser\URL('http://www.example.com/products/services');
 	 * $url->appendSegment('test');
 	 * echo $url->make() . "<br/>";
 	 * $url->appendSegment('argh','products');
@@ -340,33 +711,17 @@ class URL {
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com/products/services/test
-	 * 		http://www.powrit.com/products/argh/services/test
+	 * 		http://www.example.com/products/services/test
+	 * 		http://www.example.com/products/argh/services/test
 	 *  
 	 * @param	string	$newSegment
 	 * @param	string	$appendAfter
 	 * @return	object
 	 */
-	protected function _appendSegment( $newSegment, $appendAfter = false )
+	public function appendSegment( $newSegment, $appendAfter = false )
 	{
-		$segments = explode( "/", $this->url['path'] );
-		$arrStart = $segments;
-		$arrEnd = array();
-		if($appendAfter !== false)
-		{
-			// Find the key of $appendAfter if it's not false
-			$key = array_search( $appendAfter, $segments );
-			// If it exists...
-			if($key !== false)
-			{
-				// "apple" - "banana" - "coconut" - "date"
-				$arrStart = array_slice($segments, 0, $key+1);
-				$arrEnd = array_slice($segments, $key+1);
-			}
-		}
-		
-		$segments = array_merge($arrStart,array($newSegment),$arrEnd);
-		$this->url['path'] = count($segments) > 0 ? implode( "/", $segments ) : '' ;
+		$segments = $this->insertIntoArrayAtKey( $this->segmentArray(), $appendAfter, array( $newSegment ), 1 );
+		$this->url['path'] = count( $segments ) > 0 ? implode( "/", $segments ) : '' ;
 		return $this;
 	}
 
@@ -378,7 +733,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/products/services');
+	 * $url = new URLParser\URL('http://www.example.com/products/services');
 	 * $url->prependSegment('test');
 	 * echo $url->make() . "<br/>";
 	 * $url->prependSegment('argh','products');
@@ -386,33 +741,17 @@ class URL {
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com/test/products/services
-	 * 		http://www.powrit.com/test/argh/products/services
+	 * 		http://www.example.com/test/products/services
+	 * 		http://www.example.com/test/argh/products/services
 	 *  
 	 * @param	string	$newSegment
 	 * @param	string	$prependBefore
 	 * @return	object
 	 */
-	protected function _prependSegment( $newSegment, $prependBefore = false )
+	public function prependSegment( $newSegment, $prependBefore = false )
 	{
-		$segments = $this->_segmentArray();
-		$arrStart = array();
-		$arrEnd = $segments;
-		if($prependBefore !== false)
-		{
-			// Find the key of $appendAfter if it's not false
-			$key = array_search( $prependBefore, $segments );
-			// If it exists...
-			if($key !== false)
-			{
-				// "apple" - "banana" - "coconut" - "date"
-				$arrStart = array_slice($segments, 0, $key);
-				$arrEnd = array_slice($segments, $key);
-			}
-		}
-		
-		$segments = array_merge($arrStart,array($newSegment),$arrEnd);
-		$this->url['path'] = count($segments) > 0 ? implode( "/", $segments ) : '' ;
+		$segments = $this->insertIntoArrayAtKey( $this->segmentArray(), $prependBefore, array( $newSegment ) );
+		$this->url['path'] = count( $segments ) > 0 ? implode( "/", $segments ) : '' ;
 		return $this;
 	}
 
@@ -421,25 +760,23 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/products/services');
+	 * $url = new URLParser\URL('http://www.example.com/products/services');
 	 * $url->stripSegment('products');
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com/services
+	 * 		http://www.example.com/services
 	 * 
 	 * @param	string	$s
 	 * @return	object
 	 */
-	protected function _stripSegment( $s )
+	public function stripSegment( $s )
 	{
 		// Parse the base URL segments into an array, pop if $s is in there
-		$segments = $this->_segmentArray();
-		foreach( $segments as $key => $segment )
-			if( $segment == $s ) unset( $segments[$key] );
+		$segments = $this->segmentArray();
+		if( isset( $segments[$s] ) ) unset( $segments[$s] );
 		$this->url['path'] = count($segments) > 0 ? implode( "/", $segments ) : '' ;
-
 		return $this;
 	}
 	
@@ -448,17 +785,17 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/products/services?val1=stuff&val2=more+stuff');
+	 * $url = new URLParser\URL('http://www.example.com/products/services?val1=stuff&val2=more+stuff');
 	 * $url->stripSegments();
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com?val1=stuff&val2=more+stuff
+	 * 		http://www.example.com?val1=stuff&val2=more+stuff
 	 * 
 	 * @return	object
 	 */
-	protected function _stripSegments()
+	public function stripSegments()
 	{
 		$this->url['path'] = '' ;
 		return $this;
@@ -470,7 +807,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/oldSegment/home');
+	 * $url = new URLParser\URL('http://www.example.com/oldSegment/home');
 	 * $url->swapSegments(array(
 	 * 		'oldSegment'	=> 'newSegment',
 	 * 		'home'			=> 'main',
@@ -479,22 +816,15 @@ class URL {
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com/newSegment/main
+	 * 		http://www.example.com/newSegment/main
 	 *  
 	 * @param	array	$newSegments
 	 * @return	object
 	 */
-	protected function _swapSegment( $newSegments = array() )
+	public function swapSegments( $newSegments = array() )
 	{
-		$segments = $this->_segmentArray();
-		// Loop through every segment
-		foreach($segments as &$segment)
-			// Loop through input
-			foreach($newSegments as $oldSegment => $newSegment)
-				// If input matches, change it.
-				if($segment == $oldSegment) $segment = $newSegment;
-		// Implde segments
-		$this->url['path'] = implode("/",$segments);
+		$segments = $this->renameArrayKeys( $this->segmentArray(), $newSegments );
+		$this->url['path'] = implode( "/", $segments );
 		return $this;
 	}
 	
@@ -503,20 +833,20 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com');
+	 * $url = new URLParser\URL('http://www.example.com');
 	 * $url->anchor('products');
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com/#products
+	 * 		http://www.example.com/#products
 	 *  
 	 * @param	string	$anchor
 	 * @return	mixed
 	 */
-	protected function _anchor( $anchor = false )
+	public function anchor( $anchor = false )
 	{
-		if($anchor === false) return $this->url['fragment'];
+		if( $anchor === false ) return $this->url['fragment'];
 		$this->url['fragment'] = $anchor;
 		return $this;
 	}
@@ -526,20 +856,20 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com');
+	 * $url = new URLParser\URL('http://www.example.com');
 	 * $url->protocol('ftp');
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		ftp://www.powrit.com
+	 * 		ftp://www.example.com
 	 *  
 	 * @param	string	$protocol
 	 * @return	mixed
 	 */
-	protected function _protocol( $protocol = false )
+	public function protocol( $protocol = false )
 	{
-		if($protocol === false) return $this->url['scheme'];
+		if( $protocol === false ) return $this->url['scheme'];
 		$this->url['scheme'] = $protocol;
 		return $this;
 	}
@@ -549,7 +879,7 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+	 * $url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
 	 * $url->host('www.google.ca');
 	 * echo $url->make();
 	 * 
@@ -560,9 +890,9 @@ class URL {
 	 * @param	string	$host
 	 * @return	mixed
 	 */
-	protected function _host( $host = false )
+	public function host( $host = false )
 	{
-		if($host === false) return $this->url['host'];
+		if( $host === false ) return $this->url['host'];
 		$this->url['host'] = $host;
 		return $this;
 	}
@@ -572,20 +902,20 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+	 * $url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
 	 * $url->port(8080);
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://www.powrit.com:8080/stuff?val1=foo
+	 * 		http://www.example.com:8080/stuff?val1=foo
 	 *  
 	 * @param	string	$port
 	 * @return	mixed
 	 */
-	protected function _port( $port = false )
+	public function port( $port = false )
 	{
-		if($port === false) return $this->url['port'];
+		if( $port === false ) return $this->url['port'];
 		$this->url['port'] = $port;
 		return $this;
 	}
@@ -595,20 +925,20 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+	 * $url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
 	 * $url->user('joe');
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://joe@www.powrit.com/stuff?val1=foo
+	 * 		http://joe@www.example.com/stuff?val1=foo
 	 *  
 	 * @param	string	$user
 	 * @return	mixed
 	 */
-	protected function _user( $user = false )
+	public function user( $user = false )
 	{
-		if($user === false) return $this->url['user'];
+		if( $user === false ) return $this->url['user'];
 		$this->url['user'] = $user;
 		return $this;
 	}
@@ -618,21 +948,21 @@ class URL {
 	 * 
 	 * eg...
 	 * 
-	 * $url = new URLParser\URL('http://www.powrit.com/stuff?val1=foo');
+	 * $url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
 	 * $url->user('joe');
 	 * $url->pass('foobar');
 	 * echo $url->make();
 	 * 
 	 * Outputs...
 	 * 
-	 * 		http://joe:foobar@www.powrit.com/stuff?val1=foo
+	 * 		http://joe:foobar@www.example.com/stuff?val1=foo
 	 *  
 	 * @param	string	$pass
 	 * @return	mixed
 	 */
-	protected function _pass( $pass = false )
+	public function pass( $pass = false )
 	{
-		if($pass === false) return $this->url['pass'];
+		if( $pass === false ) return $this->url['pass'];
 		$this->url['pass'] = $pass;
 		return $this;
 	}
@@ -642,22 +972,22 @@ class URL {
 	/*
 	 * Compiles and returns the URL as a string
 	 */
-	protected function _make()
+	public function make()
 	{
 		
-		$q = $this->_query();
-		$s = $this->_segments();
+		$q = $this->query();
+		$s = $this->segments();
 		
 		$newURL = 
 			$this->url['scheme'] . "://" .
 			$this->url['user'] .
-			( ($this->url['pass'] == "") ? "" : ":" . $this->url['pass'] ) .
-			( ($this->url['user'] == "") ? "" : "@" ) .
+			( ( $this->url['pass'] == "" ) ? "" : ":" . $this->url['pass'] ) .
+			( ( $this->url['user'] == "" ) ? "" : "@" ) .
 			$this->url['host'] .
-			( ($this->url['port'] == false) ? '' : ":" . $this->url['port'] ) .
+			( ( $this->url['port'] == false ) ? '' : ":" . $this->url['port'] ) .
 			$s .
-			( (strlen($q) > 0) ? "?" . $q : "" ) .
-			( (strlen($this->url['fragment']) > 0) ? "#" . $this->url['fragment'] : "" );
+			( ( strlen( $q ) > 0 ) ? "?" . $q : "" ) .
+			( ( strlen( $this->url['fragment'] ) > 0 ) ? "#" . $this->url['fragment'] : "" );
 
 		return $newURL;
 	}
@@ -670,13 +1000,8 @@ class URL {
 	{
 		$class = get_called_class();
 		// Create a new instance (will reset $url)
-		static::$instance = new $class;
-		return call_user_func_array( array( static::$instance, "_$method" ) , $arguments );
-	}
-
-	public function __call( $method, $arguments )
-	{
-		return call_user_func_array( array( $this, "_$method" ) , $arguments );
+		$instance = new $class;
+		return call_user_func_array( array( $instance, $method ) , $arguments );
 	}
 
 }
