@@ -567,7 +567,7 @@ class URL {
 	 * 
 	 * @param	array	$array
 	 * @param	string	$key
-	 * @param	boolean	$after
+	 * @param	boolean	$offset
 	 * @return	array
 	 */
 	protected function sliceArrayAtKey( $array, $key = false, $offset = 0 )
@@ -679,6 +679,11 @@ class URL {
 	 *		'key5'		=> 'val5',
 	 * )
 	 * 
+	 * @param	array	$array
+	 * @param	string	$key
+	 * @param	array	$newKeyValuePairs
+	 * @param	int		$offset
+	 * @return	array
 	 */
 	protected function insertIntoArrayAtKey( $array, $key, $newKeyValuePairs, $offset = 0 )
 	{
