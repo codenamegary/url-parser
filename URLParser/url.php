@@ -688,7 +688,6 @@ class URL {
 	protected function insertIntoArrayAtKey( $array, $key, $newKeyValuePairs, $offset = 0 )
 	{
 		$slices = $this->sliceArrayAtKey( $array, $key, $offset );
-		if( !$slices ) return false;
 		return array_merge( $slices[0], $newKeyValuePairs, $slices[1] );
 	}
 
