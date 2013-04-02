@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">16</span></a></li>
+                <span class="label label-info">18</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -56,8 +56,6 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___callStatic" title="__callStatic :: "><span class="description">__callStatic()
-        </span><pre>__callStatic()</pre></a></li>
 <li class="method public "><a href="#method___construct" title="__construct :: Base constructor, accepts a url or by default
 uses the current full URL of the page being
 visited."><span class="description">Base constructor, accepts a url or by default
@@ -87,6 +85,7 @@ looks for $search in the URL path and returns true / false.</span><pre>segments(
 <li class="method public "><a href="#method_stripQuery" title='stripQuery :: Strips a query called "$query" from the query string.'><span class="description">Strips a query called "$query" from the query string.</span><pre>stripQuery()</pre></a></li>
 <li class="method public "><a href="#method_stripSegment" title="stripSegment :: Strips a segment called $s from the URI."><span class="description">Strips a segment called $s from the URI.</span><pre>stripSegment()</pre></a></li>
 <li class="method public "><a href="#method_stripSegments" title="stripSegments :: Strips all segments from the URL"><span class="description">Strips all segments from the URL</span><pre>stripSegments()</pre></a></li>
+<li class="method public "><a href="#method_swapQueries" title="swapQueries :: Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname"><span class="description">Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname</span><pre>swapQueries()</pre></a></li>
 <li class="method public "><a href="#method_swapQuery" title="swapQuery :: Renames a query parameter from $oldName to $newName"><span class="description">Renames a query parameter from $oldName to $newName</span><pre>swapQuery()</pre></a></li>
 <li class="method public "><a href="#method_swapSegments" title="swapSegments :: Swaps segment names using $key =&gt; $value input where
 $oldname =&gt; $newname."><span class="description">Swaps segment names using $key =&gt; $value input where
@@ -141,18 +140,6 @@ PHP's built-in parse_url function."><span class="description"></span><pre>$url</
 <div class="element class"><div class="details">
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method___callStatic"></a><div class="element clickable method public method___callStatic" data-toggle="collapse" data-target=".method___callStatic .collapse">
-<h2>__callStatic()
-        </h2>
-<pre>__callStatic($method, $arguments) </pre>
-<div class="labels"><span class="label">Static</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$method</h4></div>
-<div class="subelement argument"><h4>$arguments</h4></div>
-</div></div>
-</div>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
 <h2>Base constructor, accepts a url or by default
 uses the current full URL of the page being
@@ -590,6 +577,30 @@ echo $url->make();</p>
 <div class="subelement response"><code>object</code></div>
 </div></div>
 </div>
+<a id="method_swapQueries"></a><div class="element clickable method public method_swapQueries" data-toggle="collapse" data-target=".method_swapQueries .collapse">
+<h2>Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname</h2>
+<pre>swapQueries($queries) : object</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
+$url->swapQueries(array(
+    'val1'  => 'valX',
+    'val2'  => 'valY',
+));
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.example.com?valX=products&amp;valY=services
+</code></pre></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$queries</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>object</code></div>
+</div></div>
+</div>
 <a id="method_swapQuery"></a><div class="element clickable method public method_swapQuery" data-toggle="collapse" data-target=".method_swapQuery .collapse">
 <h2>Renames a query parameter from $oldName to $newName</h2>
 <pre>swapQuery($oldName, $newName) : object</pre>
@@ -648,8 +659,8 @@ URL passed in $url.</h2>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>This is useful for scenarios where
 you wish to batch add query strings to multiple URLs.
-You can setup the queries on one object and then _to()
-and _make() multiple calls to generate new URLs.</p></div>
+You can setup the queries on one object and then to()
+and make() multiple calls to generate new URLs.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$url</h4>
@@ -1018,7 +1029,7 @@ throughout the functions of this class.</p></div></div></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-01T14:48:17-04:00.<br></footer></div>
+            generated on 2013-04-02T00:10:49-04:00.<br></footer></div>
 </div>
 </body>
 </html>

@@ -112,100 +112,101 @@ objects from each URL.</description>
       <error line="78" code="50010">No DocBlock was found for method __call()</error>
     </parse_markers>
   </file>
-  <file path="url.php" hash="5b1e28cc9867e50fcf03e00e3ad0bbe4" package="Default">
-    <class final="false" abstract="false" namespace="codenamegary\URLParser" line="3" package="Default">
+  <file path="url.php" hash="89a5b65c737b28028fa20519d61afc0b" package="Default">
+    <namespace-alias name="Exception">Exception</namespace-alias>
+    <class final="false" abstract="false" namespace="codenamegary\URLParser" line="5" package="Default">
       <extends/>
       <name>URL</name>
       <full_name>\codenamegary\URLParser\URL</full_name>
-      <property final="false" static="false" visibility="protected" line="13" namespace="codenamegary\URLParser" package="Default">
+      <property final="false" static="false" visibility="protected" line="15" namespace="codenamegary\URLParser" package="Default">
         <name>$url</name>
         <default>array('scheme' =&gt; 'http', 'host' =&gt; '', 'port' =&gt; false, 'user' =&gt; '', 'pass' =&gt; '', 'path' =&gt; '', 'query' =&gt; '', 'fragment' =&gt; '')</default>
-        <docblock line="5">
+        <docblock line="7">
           <description>The actively used URL in the format dictated by
 PHP's built-in parse_url function.</description>
           <long-description>&lt;p&gt;This is the
 property which is actively used and modified
 throughout the functions of this class.&lt;/p&gt;</long-description>
-          <tag line="5" name="var" description="" type="array">
+          <tag line="7" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="protected" line="32" namespace="codenamegary\URLParser" package="Default">
+      <property final="false" static="false" visibility="protected" line="34" namespace="codenamegary\URLParser" package="Default">
         <name>$resetURL</name>
         <default>array('scheme' =&gt; 'http', 'host' =&gt; '', 'port' =&gt; false, 'user' =&gt; '', 'pass' =&gt; '', 'path' =&gt; '', 'query' =&gt; '', 'fragment' =&gt; '')</default>
-        <docblock line="24">
+        <docblock line="26">
           <description>Same as $url but always contains a blank array,
 used by the _to() method to reset the current
 URL property when overwriting with a new
 base URL.</description>
           <long-description></long-description>
-          <tag line="24" name="var" description="" type="array">
+          <tag line="26" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="51" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="53" package="Default">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <docblock line="43">
+        <docblock line="45">
           <description>Base constructor, accepts a url or by default
 uses the current full URL of the page being
 visited.</description>
           <long-description></long-description>
-          <tag line="43" name="param" description="" type="string" variable="$url">
+          <tag line="45" name="param" description="" type="string" variable="$url">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="43" name="return" description="" type="object">
+          <tag line="45" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="51">
+        <argument line="53">
           <name>$url</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="65" package="Default">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="67" package="Default">
         <name>currentURL</name>
         <full_name>currentURL</full_name>
-        <docblock line="58">
+        <docblock line="60">
           <description>Parses and returns the full URL of the page
 currently being visited.</description>
           <long-description>&lt;p&gt;Used by the
 __construct method.&lt;/p&gt;</long-description>
-          <tag line="58" name="return" description="" type="string">
+          <tag line="60" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="86" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="88" package="Default">
         <name>to</name>
         <full_name>to</full_name>
-        <docblock line="76">
+        <docblock line="78">
           <description>Swaps the base URL the parser is operating on for the
 URL passed in $url.</description>
           <long-description>&lt;p&gt;This is useful for scenarios where
 you wish to batch add query strings to multiple URLs.
-You can setup the queries on one object and then _to()
-and _make() multiple calls to generate new URLs.&lt;/p&gt;</long-description>
-          <tag line="76" name="param" description="" type="string" variable="$url">
+You can setup the queries on one object and then to()
+and make() multiple calls to generate new URLs.&lt;/p&gt;</long-description>
+          <tag line="78" name="param" description="" type="string" variable="$url">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="76" name="return" description="" type="object">
+          <tag line="78" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="86">
+        <argument line="88">
           <name>$url</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="114" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="118" package="Default">
         <name>queryArray</name>
         <full_name>queryArray</full_name>
-        <docblock line="95">
+        <docblock line="99">
           <description>Returns the query string for the current URL as a $key =&gt; $value array.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -220,15 +221,15 @@ var_dump($url-&gt;queryArray());&lt;/p&gt;
     ["val2"]=&gt;
     string(8) "services"
 }&lt;/p&gt;</long-description>
-          <tag line="95" name="return" description="" type="array">
+          <tag line="99" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="143" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="147" package="Default">
         <name>query</name>
         <full_name>query</full_name>
-        <docblock line="121">
+        <docblock line="125">
           <description>Returns the query string for the current URL or, if
 $query is specified returns the value for that parameter</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
@@ -246,23 +247,23 @@ echo $url-&gt;query() . "&amp;lt;br/&gt;";&lt;/p&gt;
 
     val1=products&amp;amp;val2=services
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="121" name="param" description="" type="string" variable="$query">
+          <tag line="125" name="param" description="" type="string" variable="$query">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="121" name="return" description="" type="string">
+          <tag line="125" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="143">
+        <argument line="147">
           <name>$query</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="176" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="180" package="Default">
         <name>addQuery</name>
         <full_name>addQuery</full_name>
-        <docblock line="156">
+        <docblock line="160">
           <description>Appends a $key =&gt; $value array into the URL's
 query string.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
@@ -278,23 +279,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com?val1=stuff&amp;amp;val2=more+stuff
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="156" name="param" description="" type="array" variable="$query">
+          <tag line="160" name="param" description="" type="array" variable="$query">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="156" name="return" description="" type="object">
+          <tag line="160" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="176">
+        <argument line="180">
           <name>$query</name>
           <default>array()</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="199" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="203" package="Default">
         <name>stripQuery</name>
         <full_name>stripQuery</full_name>
-        <docblock line="183">
+        <docblock line="187">
           <description>Strips a query called "$query" from the query string.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -306,23 +307,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com?val2=services
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="183" name="param" description="" type="string" variable="$query">
+          <tag line="187" name="param" description="" type="string" variable="$query">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="183" name="return" description="" type="object">
+          <tag line="187" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="199">
+        <argument line="203">
           <name>$query</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="223" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="227" package="Default">
         <name>stripQueries</name>
         <full_name>stripQueries</full_name>
-        <docblock line="208">
+        <docblock line="212">
           <description>Strips the ENTIRE query string from the url.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -334,15 +335,15 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="208" name="return" description="" type="object">
+          <tag line="212" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="246" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="250" package="Default">
         <name>swapQuery</name>
         <full_name>swapQuery</full_name>
-        <docblock line="229">
+        <docblock line="233">
           <description>Renames a query parameter from $oldName to $newName</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -354,31 +355,65 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com?val2=services&amp;amp;valX=products
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="229" name="param" description="" type="string" variable="$old">
+          <tag line="233" name="param" description="" type="string" variable="$old">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="229" name="param" description="" type="string" variable="$new">
+          <tag line="233" name="param" description="" type="string" variable="$new">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="229" name="return" description="" type="object">
+          <tag line="233" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="246">
+        <argument line="250">
           <name>$oldName</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="246">
+        <argument line="250">
           <name>$newName</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="277" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="277" package="Default">
+        <name>swapQueries</name>
+        <full_name>swapQueries</full_name>
+        <docblock line="257">
+          <description>Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname</description>
+          <long-description>&lt;p&gt;eg...&lt;/p&gt;
+
+&lt;p&gt;$url = new URLParser\URL('http://www.example.com?val1=products&amp;amp;val2=services');
+$url-&gt;swapQueries(array(
+    'val1'  =&gt; 'valX',
+    'val2'  =&gt; 'valY',
+));
+echo $url-&gt;make();&lt;/p&gt;
+
+&lt;p&gt;Outputs...&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    http://www.example.com?valX=products&amp;amp;valY=services
+&lt;/code&gt;&lt;/pre&gt;</long-description>
+          <tag line="257" name="param" description="" type="string" variable="$old">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="257" name="param" description="" type="string" variable="$new">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="257" name="return" description="" type="object">
+            <type by_reference="false">object</type>
+          </tag>
+        </docblock>
+        <argument line="277">
+          <name>$queries</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="308" package="Default">
         <name>renameArrayKey</name>
         <full_name>renameArrayKey</full_name>
-        <docblock line="253">
+        <docblock line="284">
           <description>Lookups up $oldKey in $array and renames the key to $newKey</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -395,39 +430,39 @@ echo $url-&gt;make();&lt;/p&gt;
         'test'      =&gt; 'bar',
         'foo2'      =&gt; 'bar2',
 )&lt;/p&gt;</long-description>
-          <tag line="253" name="param" description="" type="array" variable="$array">
+          <tag line="284" name="param" description="" type="array" variable="$array">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="253" name="param" description="" type="string" variable="$oldKey">
+          <tag line="284" name="param" description="" type="string" variable="$oldKey">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="253" name="param" description="" type="string" variable="$newKey">
+          <tag line="284" name="param" description="" type="string" variable="$newKey">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="253" name="return" description="" type="array">
+          <tag line="284" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
-        <argument line="277">
+        <argument line="308">
           <name>$array</name>
           <default>array()</default>
           <type/>
         </argument>
-        <argument line="277">
+        <argument line="308">
           <name>$oldKey</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="277">
+        <argument line="308">
           <name>$newKey</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="309" package="Default">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="346" package="Default">
         <name>renameArrayKeys</name>
         <full_name>renameArrayKeys</full_name>
-        <docblock line="286">
+        <docblock line="323">
           <description>Plural of renameArrayKey, allows passing of oldKey =&gt; newKey as an array.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -444,31 +479,31 @@ echo $url-&gt;make();&lt;/p&gt;
         'test'      =&gt; 'bar',
         'foo2'      =&gt; 'bar2',
 )&lt;/p&gt;</long-description>
-          <tag line="286" name="param" description="" type="array" variable="$array">
+          <tag line="323" name="param" description="" type="array" variable="$array">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="286" name="param" description="" type="array" variable="$newKeys">
+          <tag line="323" name="param" description="" type="array" variable="$newKeys">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="286" name="return" description="" type="array">
+          <tag line="323" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
-        <argument line="309">
+        <argument line="346">
           <name>$array</name>
           <default>array()</default>
           <type/>
         </argument>
-        <argument line="309">
+        <argument line="346">
           <name>$newKeys</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="333" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="371" package="Default">
         <name>segmentArray</name>
         <full_name>segmentArray</full_name>
-        <docblock line="314">
+        <docblock line="352">
           <description>Returns the segments (path) string for the current URL as an array.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -483,15 +518,15 @@ var_dump($url-&gt;segmentArray());&lt;/p&gt;
     [1]=&gt;
     string(8) "services"
 }&lt;/p&gt;</long-description>
-          <tag line="314" name="return" description="" type="array">
+          <tag line="352" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="361" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="399" package="Default">
         <name>segments</name>
         <full_name>segments</full_name>
-        <docblock line="339">
+        <docblock line="377">
           <description>Returns the the entire segment path if $search is false or
 looks for $search in the URL path and returns true / false.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
@@ -509,23 +544,23 @@ echo $url-&gt;segments() . "&amp;lt;br/&gt;";&lt;/p&gt;
     (false)
     /products/services
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="339" name="param" description="" type="string" variable="$search">
+          <tag line="377" name="param" description="" type="string" variable="$search">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="339" name="return" description="" type="mixed">
+          <tag line="377" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="361">
+        <argument line="399">
           <name>$search</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="573" package="Default">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="611" package="Default">
         <name>sliceArrayAtKey</name>
         <full_name>sliceArrayAtKey</full_name>
-        <docblock line="373">
+        <docblock line="411">
           <description>Takes an array and returns an array of 2 arrays.</description>
           <long-description>&lt;ul&gt;
 &lt;li&gt;One array including everything BEFORE the specified key&lt;/li&gt;
@@ -722,63 +757,63 @@ array(
         [1]
         ),
 )&lt;/p&gt;</long-description>
-          <tag line="373" name="param" description="" type="array" variable="$array">
+          <tag line="411" name="param" description="" type="array" variable="$array">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="373" name="param" description="" type="string" variable="$key">
+          <tag line="411" name="param" description="" type="string" variable="$key">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="373" name="param" description="" type="boolean" variable="$offset">
+          <tag line="411" name="param" description="" type="boolean" variable="$offset">
             <type by_reference="false">boolean</type>
           </tag>
-          <tag line="373" name="return" description="" type="array">
+          <tag line="411" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
-        <argument line="573">
+        <argument line="611">
           <name>$array</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="573">
+        <argument line="611">
           <name>$key</name>
           <default>false</default>
           <type/>
         </argument>
-        <argument line="573">
+        <argument line="611">
           <name>$offset</name>
           <default>0</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="688" package="Default">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="codenamegary\URLParser" line="726" package="Default">
         <name>insertIntoArrayAtKey</name>
         <full_name>insertIntoArrayAtKey</full_name>
-        <argument line="688">
+        <argument line="726">
           <name>$array</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="688">
+        <argument line="726">
           <name>$key</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="688">
+        <argument line="726">
           <name>$newKeyValuePairs</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="688">
+        <argument line="726">
           <name>$offset</name>
           <default>0</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="717" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="755" package="Default">
         <name>appendSegment</name>
         <full_name>appendSegment</full_name>
-        <docblock line="694">
+        <docblock line="732">
           <description>Appends a specified text segment to the URL path.</description>
           <long-description>&lt;p&gt;Optionally
 a segment can be specified ($appendAfter) and the new segment
@@ -798,31 +833,31 @@ echo $url-&gt;make() . "&amp;lt;br/&gt;";&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;    http://www.example.com/products/services/test
     http://www.example.com/products/argh/services/test
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="694" name="param" description="" type="string" variable="$newSegment">
+          <tag line="732" name="param" description="" type="string" variable="$newSegment">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="694" name="param" description="" type="string" variable="$appendAfter">
+          <tag line="732" name="param" description="" type="string" variable="$appendAfter">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="694" name="return" description="" type="object">
+          <tag line="732" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="717">
+        <argument line="755">
           <name>$newSegment</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="717">
+        <argument line="755">
           <name>$appendAfter</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="747" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="785" package="Default">
         <name>prependSegment</name>
         <full_name>prependSegment</full_name>
-        <docblock line="724">
+        <docblock line="762">
           <description>Prepends a specified text segment to the URL path.</description>
           <long-description>&lt;p&gt;Optionally
 a segment can be specified ($prependBefore) and the new segment
@@ -842,31 +877,31 @@ echo $url-&gt;make() . "&amp;lt;br/&gt;";&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;    http://www.example.com/test/products/services
     http://www.example.com/test/argh/products/services
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="724" name="param" description="" type="string" variable="$newSegment">
+          <tag line="762" name="param" description="" type="string" variable="$newSegment">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="724" name="param" description="" type="string" variable="$prependBefore">
+          <tag line="762" name="param" description="" type="string" variable="$prependBefore">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="724" name="return" description="" type="object">
+          <tag line="762" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="747">
+        <argument line="785">
           <name>$newSegment</name>
           <default></default>
           <type/>
         </argument>
-        <argument line="747">
+        <argument line="785">
           <name>$prependBefore</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="770" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="808" package="Default">
         <name>stripSegment</name>
         <full_name>stripSegment</full_name>
-        <docblock line="754">
+        <docblock line="792">
           <description>Strips a segment called $s from the URI.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -878,23 +913,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com/services
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="754" name="param" description="" type="string" variable="$s">
+          <tag line="792" name="param" description="" type="string" variable="$s">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="754" name="return" description="" type="object">
+          <tag line="792" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="770">
+        <argument line="808">
           <name>$s</name>
           <default></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="794" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="833" package="Default">
         <name>stripSegments</name>
         <full_name>stripSegments</full_name>
-        <docblock line="779">
+        <docblock line="818">
           <description>Strips all segments from the URL</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -906,15 +941,15 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com?val1=stuff&amp;amp;val2=more+stuff
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="779" name="return" description="" type="object">
+          <tag line="818" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="820" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="859" package="Default">
         <name>swapSegments</name>
         <full_name>swapSegments</full_name>
-        <docblock line="800">
+        <docblock line="839">
           <description>Swaps segment names using $key =&gt; $value input where
 $oldname =&gt; $newname.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
@@ -930,23 +965,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com/newSegment/main
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="800" name="param" description="" type="array" variable="$newSegments">
+          <tag line="839" name="param" description="" type="array" variable="$newSegments">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="800" name="return" description="" type="object">
+          <tag line="839" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="820">
+        <argument line="859">
           <name>$newSegments</name>
           <default>array()</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="843" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="887" package="Default">
         <name>anchor</name>
         <full_name>anchor</full_name>
-        <docblock line="827">
+        <docblock line="871">
           <description>Sets or returns the anchor tag at the end of the URL</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -958,23 +993,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com/#products
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="827" name="param" description="" type="string" variable="$anchor">
+          <tag line="871" name="param" description="" type="string" variable="$anchor">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="827" name="return" description="" type="mixed">
+          <tag line="871" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="843">
+        <argument line="887">
           <name>$anchor</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="866" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="910" package="Default">
         <name>protocol</name>
         <full_name>protocol</full_name>
-        <docblock line="850">
+        <docblock line="894">
           <description>Sets or returns the protocol for the URL (http/ftp/etc.).</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -986,23 +1021,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    ftp://www.example.com
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="850" name="param" description="" type="string" variable="$protocol">
+          <tag line="894" name="param" description="" type="string" variable="$protocol">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="850" name="return" description="" type="mixed">
+          <tag line="894" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="866">
+        <argument line="910">
           <name>$protocol</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="889" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="933" package="Default">
         <name>host</name>
         <full_name>host</full_name>
-        <docblock line="873">
+        <docblock line="917">
           <description>Sets or returns the host (domain) for the url.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -1014,23 +1049,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.google.ca/stuff?val1=foo
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="873" name="param" description="" type="string" variable="$host">
+          <tag line="917" name="param" description="" type="string" variable="$host">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="873" name="return" description="" type="mixed">
+          <tag line="917" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="889">
+        <argument line="933">
           <name>$host</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="912" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="956" package="Default">
         <name>port</name>
         <full_name>port</full_name>
-        <docblock line="896">
+        <docblock line="940">
           <description>Sets or returns the port for the url.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -1042,23 +1077,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://www.example.com:8080/stuff?val1=foo
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="896" name="param" description="" type="string" variable="$port">
+          <tag line="940" name="param" description="" type="string" variable="$port">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="896" name="return" description="" type="mixed">
+          <tag line="940" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="912">
+        <argument line="956">
           <name>$port</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="935" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="979" package="Default">
         <name>user</name>
         <full_name>user</full_name>
-        <docblock line="919">
+        <docblock line="963">
           <description>Sets or returns the user for auth.</description>
           <long-description>&lt;p&gt;eg...&lt;/p&gt;
 
@@ -1070,23 +1105,23 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://joe@www.example.com/stuff?val1=foo
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="919" name="param" description="" type="string" variable="$user">
+          <tag line="963" name="param" description="" type="string" variable="$user">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="919" name="return" description="" type="mixed">
+          <tag line="963" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="935">
+        <argument line="979">
           <name>$user</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="959" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="1003" package="Default">
         <name>pass</name>
         <full_name>pass</full_name>
-        <docblock line="942">
+        <docblock line="986">
           <description>Sets or returns the password for auth.</description>
           <long-description>&lt;p&gt;User must be specified first.&lt;/p&gt;
 
@@ -1101,48 +1136,36 @@ echo $url-&gt;make();&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    http://joe:foobar@www.example.com/stuff?val1=foo
 &lt;/code&gt;&lt;/pre&gt;</long-description>
-          <tag line="942" name="param" description="" type="string" variable="$pass">
+          <tag line="986" name="param" description="" type="string" variable="$pass">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="942" name="return" description="" type="mixed">
+          <tag line="986" name="return" description="" type="mixed">
             <type by_reference="false">mixed</type>
           </tag>
         </docblock>
-        <argument line="959">
+        <argument line="1003">
           <name>$pass</name>
           <default>false</default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="971" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="codenamegary\URLParser" line="1015" package="Default">
         <name>make</name>
         <full_name>make</full_name>
-      </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="codenamegary\URLParser" line="995" package="Default">
-        <name>__callStatic</name>
-        <full_name>__callStatic</full_name>
-        <argument line="995">
-          <name>$method</name>
-          <default></default>
-          <type/>
-        </argument>
-        <argument line="995">
-          <name>$arguments</name>
-          <default></default>
-          <type/>
-        </argument>
       </method>
     </class>
     <parse_markers>
       <error line="0" code="50007">No page-level DocBlock was found in file url.php</error>
-      <error line="3" code="50000">No DocBlock was found for \codenamegary\URLParser\URL</error>
-      <error line="229" code="50014">Name of argument $oldName does not match with the DocBlock's name $old in swapQuery()</error>
-      <error line="229" code="50014">Name of argument $newName does not match with the DocBlock's name $new in swapQuery()</error>
-      <notice line="229" code="50013">Parameter $old could not be found in swapQuery()</notice>
-      <notice line="229" code="50013">Parameter $new could not be found in swapQuery()</notice>
-      <error line="688" code="50010">No DocBlock was found for method insertIntoArrayAtKey()</error>
-      <error line="971" code="50010">No DocBlock was found for method make()</error>
-      <error line="995" code="50010">No DocBlock was found for method __callStatic()</error>
+      <error line="5" code="50000">No DocBlock was found for \codenamegary\URLParser\URL</error>
+      <error line="233" code="50014">Name of argument $oldName does not match with the DocBlock's name $old in swapQuery()</error>
+      <error line="233" code="50014">Name of argument $newName does not match with the DocBlock's name $new in swapQuery()</error>
+      <notice line="233" code="50013">Parameter $old could not be found in swapQuery()</notice>
+      <notice line="233" code="50013">Parameter $new could not be found in swapQuery()</notice>
+      <error line="257" code="50014">Name of argument $queries does not match with the DocBlock's name $old in swapQueries()</error>
+      <notice line="257" code="50013">Parameter $old could not be found in swapQueries()</notice>
+      <notice line="257" code="50013">Parameter $new could not be found in swapQueries()</notice>
+      <error line="726" code="50010">No DocBlock was found for method insertIntoArrayAtKey()</error>
+      <error line="1015" code="50010">No DocBlock was found for method make()</error>
     </parse_markers>
   </file>
   <package name="Default" full_name="Default"/>
