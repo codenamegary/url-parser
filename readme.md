@@ -1,21 +1,26 @@
-URLParser-PHP
+URLParser
 -------------
 
 The best little URL tool for PHP!
 
-Features
+#####Features
 
 - Fully tested
 - Chainable methods
 - PSR-0 autoload and PSR-1 compliant
 - Friendly syntax for Segment, Query String and other URL part manipulation
 
+#####Coming Soon
+
+- Batch wrapper for processing multiple URLs
+- Composer / Packagist publishing
+
 #Usage Examples
 
 ###Load a complex URL and merge in some query parameters.
 
 ```php
-$url = new coenamegary\URLParser\URL('https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.653226,-79.383184&sspn=0.444641,1.056747&geocode=FRCUIAIduoZTCCnnVy7whxtdYDGJG1cii2EBLg%3BFWoYmgIdcLVE-ymlO8bXkMvUiTF3xLQqUFU1Mg&oq=tokyo&mra=ls&t=m&z=3');
+$url = new codenamegary\URLParser\URL('https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.653226,-79.383184&sspn=0.444641,1.056747&geocode=FRCUIAIduoZTCCnnVy7whxtdYDGJG1cii2EBLg%3BFWoYmgIdcLVE-ymlO8bXkMvUiTF3xLQqUFU1Mg&oq=tokyo&mra=ls&t=m&z=3');
 $url->addQuery(array(
 	'foo'	=> 'bar',
 ));
