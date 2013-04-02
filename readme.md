@@ -1,4 +1,4 @@
-URLParser
+URLParser - 0.1.1 - BETA
 -------------
 
 The best little URL tool for PHP!
@@ -23,6 +23,8 @@ Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/ma
 - Extract to the location of your choosing
 - Include url.php
  - @include('path/to/extracted/files/src/codenamegary/URLParser/url.php');
+- **OR** use a PSR-0 compatible Autoloader of your choice
+ - Map namespace "codenamegary" => 'path/to/extracted/files/src/codenamegary'
 
 #Usage Examples
 
