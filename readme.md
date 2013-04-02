@@ -1,4 +1,4 @@
-URLParser - 0.1.1 - BETA
+URLParser - 0.1.4 - BETA
 -------------
 
 The best little URL tool for PHP!
