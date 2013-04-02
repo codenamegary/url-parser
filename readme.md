@@ -15,6 +15,15 @@ The best little URL tool for PHP!
 - Batch wrapper for processing multiple URLs
 - Composer / Packagist publishing
 
+###Installation
+
+#####(for now, composer installation coming soon)
+Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/master.zip) [.gz](https://bitbucket.org/codenamegary/urlparser/get/master.tar.gz) [.bz2](https://bitbucket.org/codenamegary/urlparser/get/master.tar.bz2) )
+
+- Extract to the location of your choosing
+- Include url.php
+ - @include('path/to/extracted/files/src/codenamegary/URLParser/url.php');
+
 #Usage Examples
 
 ###Load a complex URL and merge in some query parameters.
