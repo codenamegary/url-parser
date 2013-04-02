@@ -17,7 +17,7 @@ The best little URL tool for PHP!
 
 ###Installation
 
-#####(for now, composer installation coming soon)
+#####Manually
 Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/master.zip) [.gz](https://bitbucket.org/codenamegary/urlparser/get/master.tar.gz) [.bz2](https://bitbucket.org/codenamegary/urlparser/get/master.tar.bz2) )
 
 - Extract to the location of your choosing
@@ -25,6 +25,10 @@ Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/ma
  - @include('path/to/extracted/files/src/codenamegary/URLParser/url.php');
 - **OR** use a PSR-0 compatible Autoloader of your choice
  - Map namespace "codenamegary" => 'path/to/extracted/files/src/codenamegary'
+
+#####Composer via Packagist
+
+- In composer.json add "codenamegary/url-parser": "0.1.3-beta" to require
 
 ###Docs
 
