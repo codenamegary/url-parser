@@ -184,14 +184,13 @@ class UrlTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals( 'http://www.foo.com/high/cat/acme?stuff=thing&foo=bar&blarg=snoggle#place', $this->url->make() );
 	}
 
-	public function testSwapSegments()
+	public function testAnchor()
 	{
 		$this->url->to( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
-		$this->url->swapSegments(array(
-			'bar'	=> 'high',
-			'foo'	=> 'cat',
-		));
-		$this->assertEquals( 'http://www.foo.com/high/cat/acme?stuff=thing&foo=bar&blarg=snoggle#place', $this->url->make() );
+		$this->assertEquals( 'place', $this->url->anchor() );
+		$this->url->anchor( 'time' );
+		$this->assertEquals( 'time', $this->url->anchor() );
+		$this->assertEquals( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#time', $this->url->make() );
 	}
 
 }
