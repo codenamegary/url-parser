@@ -1,5 +1,5 @@
 {
-	"name": "codenamegary/URLParser",
+	"name": "codenamegary/url-parser",
 	"description": "Parse, merge and modify URLs while maintaining integrity of all parts.",
 	"type": "library",
 	"keywords": [ "codenamegary", "url", "parsing" ],
