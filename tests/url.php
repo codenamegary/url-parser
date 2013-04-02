@@ -191,6 +191,45 @@ class UrlTest extends PHPUnit_Framework_TestCase {
 		$this->url->anchor( 'time' );
 		$this->assertEquals( 'time', $this->url->anchor() );
 		$this->assertEquals( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#time', $this->url->make() );
+		$this->url->anchor( '' );
+		$this->assertEquals( '', $this->url->anchor() );
+		$this->assertEquals( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle', $this->url->make() );
+	}
+
+	public function testPort()
+	{
+		$this->url->to( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->assertFalse( $this->url->port() );
+		$this->url->to( 'http://www.foo.com:8080/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->assertEquals( 8080, $this->url->port() );
+		$this->url->to( 'https://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->assertEquals( false, $this->url->port() );
+	}
+
+	public function testUserAndPass()
+	{
+		$this->url->to( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->assertEquals( '', $this->url->user() );
+		$this->url->to( 'http://joe@www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->assertEquals( 'joe', $this->url->user() );
+		$this->url->to( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->url->user( 'jeffery' );
+		$this->assertEquals( 'jeffery', $this->url->user() );
+		$this->assertEquals( 'http://jeffery@www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place', $this->url->make() );
+		$this->url->pass( 'blarney' );
+		$this->assertEquals( 'blarney', $this->url->pass() );
+		$this->assertEquals( 'http://jeffery:blarney@www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place', $this->url->make() );
+	}
+
+	public function testPass()
+	{
+		$this->url->to( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->assertEquals( '', $this->url->pass() );
+		$this->url->to( 'http://joe:blimey@www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->assertEquals( 'blimey', $this->url->pass() );
+		$this->url->to( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
+		$this->url->pass( 'blarney' );
+		$this->assertEquals( 'blarney', $this->url->pass() );
 	}
 
 }
