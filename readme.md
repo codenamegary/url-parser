@@ -28,7 +28,8 @@ Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/ma
 
 ###Docs
 
-PHPDocs are included in the repo under 'path/to/extracted/files/docs/index.html'.
+- PHPDocs are included in the repo under 'path/to/extracted/files/docs/index.html'
+- Plenty of documentation and examples throughout the source in [url.php](https://bitbucket.org/codenamegary/urlparser/src/6a4b5b489cfb83ecd2c6dcda7d023753d11baa7b/src/codenamegary/URLParser/url.php?at=master)
 
 #Usage Examples
 

@@ -2,11 +2,11 @@
 	"name": "codenamegary/URLParser",
 	"description": "Parse, merge and modify URLs while maintaining integrity of all parts.",
 	"type": "library",
-	"keywords": ["codenamegary","url","parsing"],
+	"keywords": [ "codenamegary", "url", "parsing" ],
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Gary Saunders",
+			"name": "codenamegary",
 			"email": "gary@powrit.com"
 		}
 	],
@@ -18,9 +18,8 @@
 		"phpunit/phpunit": "3.7.*"
 	},
 	"autoload": {
-		"classmap": [
-			"src"
-		]
-	},
-	"target-dir": "codenamegary/URLParser"
+		"psr-0": {
+			"codenamegary": "src/"
+		}
+	}
 }
