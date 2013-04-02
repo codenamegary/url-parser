@@ -1,4 +1,6 @@
-<?php namespace URLParser;
+<?php namespace codenamegary\URLParser;
+
+use \Exception as Exception;
 
 class URL {
 
@@ -52,7 +54,7 @@ class URL {
 	{
 		// Call the _to method with either the full current page url
 		// (when $url is false) or the value of $url
-		return $this->_to( ( $url == false ) ? $this->currentURL() : $url );
+		return $this->to( ( $url == false ) ? $this->currentURL() : $url );
 	}
 
 	/**
@@ -77,8 +79,8 @@ class URL {
 	 * Swaps the base URL the parser is operating on for the
 	 * URL passed in $url. This is useful for scenarios where
 	 * you wish to batch add query strings to multiple URLs.
-	 * You can setup the queries on one object and then _to()
-	 * and _make() multiple calls to generate new URLs.
+	 * You can setup the queries on one object and then to()
+	 * and make() multiple calls to generate new URLs.
 	 * 
 	 * @param	string	$url
 	 * @return	object
@@ -87,7 +89,9 @@ class URL {
 	{
 		// If nothing is passed just return the current instance
 		if( $url == false ) return $this;
-		$this->url = array_merge( $this->resetURL, parse_url( $url ) );
+		$parsedUrl = parse_url( $url );
+		if( $parsedUrl == false ) throw new Exception('Invalid URL');
+		$this->url = array_merge( $this->resetURL, $parsedUrl );
 		// Method chaining
 		return $this;
 	}
@@ -251,6 +255,33 @@ class URL {
 	}
 
 	/**
+	 * Renames a set of query parameters from a key => value array of oldname => newname 
+	 *
+	 * eg...
+	 * 
+	 * $url = new URLParser\URL('http://www.example.com?val1=products&val2=services');
+	 * $url->swapQueries(array(
+	 * 	'val1'	=> 'valX',
+	 * 	'val2'	=> 'valY',
+	 * ));
+	 * echo $url->make();
+	 * 
+	 * Outputs...
+	 * 
+	 * 		http://www.example.com?valX=products&valY=services
+	 *  
+	 * @param	string	$old
+	 * @param	string	$new
+	 * @return	object
+	 */
+	public function swapQueries( $queries )
+	{
+		$queries = $this->renameArrayKeys( $this->queryArray(), $queries );
+		$this->url['query'] = http_build_query( $queries );
+		return $this;
+	}
+
+	/**
 	 * Lookups up $oldKey in $array and renames the key to $newKey
 	 * 
 	 * eg...
@@ -279,8 +310,14 @@ class URL {
 		// If oldKey isn't set just return the passed array, unmodified
 		if( !isset( $array[$oldKey] ) ) return $array;
 		$keys = array_keys( $array );
-		$keys[$oldKey] = $newKey;
-		return array_combine( $keys, array_values( $array ) );
+		$newArray = array();
+		foreach( $keys as $k )
+		{
+			$ko = $k;
+			if( $k == $oldKey ) $k = $newKey;
+			$newArray[$k] = $array[$ko];
+		}
+		return $newArray;
 	}
 	
 	/**
@@ -308,7 +345,8 @@ class URL {
 	 */
 	protected function renameArrayKeys( $array = array(), $newKeys )
 	{
-		foreach( $newKeys as $oldKey => $newKey ) $array = $this->renameArrayKey( $oldKey, $newKey );
+		foreach( $newKeys as $oldKey => $newKey ) $array = $this->renameArrayKey( $array, $oldKey, $newKey );
+		return $array;
 	}
 
 	/**
@@ -575,7 +613,7 @@ class URL {
 		$arrStart = ( $offset > 0 ) ? $array : array() ;
 		$arrEnd = ( $offset <= 0 ) ? $array : array() ;
 		$arrKeys = array_keys( $array );
-		$key = $key ? array_search( $key, $arrKeys ) : false ;
+		$key = $key ? array_search( $key, $array ) : false ;
 		if( $key !== false )
 		{
 			$arrStart = array_slice( $array, 0, $key + $offset );
@@ -771,7 +809,8 @@ class URL {
 	{
 		// Parse the base URL segments into an array, pop if $s is in there
 		$segments = $this->segmentArray();
-		if( isset( $segments[$s] ) ) unset( $segments[$s] );
+		$id = array_search( $s, $segments );
+		if( $id !== false ) unset( $segments[$id] );
 		$this->url['path'] = count($segments) > 0 ? implode( "/", $segments ) : '' ;
 		return $this;
 	}
@@ -819,7 +858,12 @@ class URL {
 	 */
 	public function swapSegments( $newSegments = array() )
 	{
-		$segments = $this->renameArrayKeys( $this->segmentArray(), $newSegments );
+		$segments = $this->segmentArray();
+		foreach( $newSegments as $oldSegment => $newSegment )
+		{
+			$id = array_search( $oldSegment, $segments );
+			if( $id !== false ) $segments[$id] = $newSegment;
+		}
 		$this->url['path'] = implode( "/", $segments );
 		return $this;
 	}
@@ -986,18 +1030,6 @@ class URL {
 			( ( strlen( $this->url['fragment'] ) > 0 ) ? "#" . $this->url['fragment'] : "" );
 
 		return $newURL;
-	}
-	
-	// Enables static methods so you can do stuff like...
-	//
-	//  $url = URLParser::addQuery( array('userid',12) )->to('http://www.google.ca/?q=stuff');
-	//
-	public static function __callStatic( $method, $arguments )
-	{
-		$class = get_called_class();
-		// Create a new instance (will reset $url)
-		$instance = new $class;
-		return call_user_func_array( array( $instance, $method ) , $arguments );
 	}
 
 }

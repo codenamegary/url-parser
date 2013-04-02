@@ -1,7 +1,4 @@
-<?php
-
-namespace URLParser;
-use URLParser\URL;
+<?php namespace codenamegary\URLParser;
 
 class Batch {
 
