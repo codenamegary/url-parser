@@ -230,6 +230,8 @@ class UrlTest extends PHPUnit_Framework_TestCase {
 		$this->url->to( 'http://www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place' );
 		$this->url->pass( 'blarney' );
 		$this->assertEquals( 'blarney', $this->url->pass() );
+		$this->url->user( 'jack' );
+		$this->assertEquals( 'http://jack:blarney@www.foo.com/bar/foo/acme?stuff=thing&foo=bar&blarg=snoggle#place', $this->url->make() );
 	}
 
 }
