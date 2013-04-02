@@ -10,6 +10,7 @@ class UrlTest extends PHPUnit_Framework_TestCase {
 		$_SERVER["SERVER_PROTOCOL"] = "http://";
 		$_SERVER["SERVER_PORT"] = "80";
 		$_SERVER['HTTP_HOST'] = "www.example.com";
+		die(var_dump(file_get_contents('vendor/autoload.php')));
 		$this->url = new codenamegary\URLParser\URL;
 	}
 	
