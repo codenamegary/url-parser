@@ -15,22 +15,22 @@ class UrlTest extends PHPUnit_Framework_TestCase {
 	
 	public function testConstructor()
 	{
-		$this->assertInstanceOf( 'codenamegary\\URLParser\URL', new codenamegary\URLParser\URL );
+		$this->assertInstanceOf( 'codenamegary\\URLParser\\URL', new codenamegary\URLParser\URL );
 		
 		$url = new codenamegary\URLParser\URL( 'http://www.acme.co/joes/java/hut' );
-		$this->assertInstanceOf( 'codenamegary\\URLParser\URL', $url );
+		$this->assertInstanceOf( 'codenamegary\\URLParser\\URL', $url );
 		$this->assertEquals( 'http://www.acme.co/joes/java/hut', $url->make() );
 
 		$url = new codenamegary\URLParser\URL( 'https://www.acme.co/joes/java/hut' );
-		$this->assertInstanceOf( 'codenamegary\\URLParser\URL', $url );
+		$this->assertInstanceOf( 'codenamegary\\URLParser\\URL', $url );
 		$this->assertEquals( 'https://www.acme.co/joes/java/hut', $url->make() );
 
 		$url = new codenamegary\URLParser\URL( 'http://www.acme.co:8080/joes/java/hut' );
-		$this->assertInstanceOf( 'codenamegary\\URLParser\URL', $url );
+		$this->assertInstanceOf( 'codenamegary\\URLParser\\URL', $url );
 		$this->assertEquals( 'http://www.acme.co:8080/joes/java/hut', $url->make() );
 
 		$url = new codenamegary\URLParser\URL( 'ftps://www.acme.co:8080/joes/java/hut' );
-		$this->assertInstanceOf( 'codenamegary\\URLParser\URL', $url );
+		$this->assertInstanceOf( 'codenamegary\\URLParser\\URL', $url );
 		$this->assertEquals( 'ftps://www.acme.co:8080/joes/java/hut', $url->make() );
 		
 		$this->setExpectedException( 'Exception' );
