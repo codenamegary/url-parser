@@ -26,6 +26,10 @@ Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/ma
 - **OR** use a PSR-0 compatible Autoloader of your choice
  - Map namespace "codenamegary" => 'path/to/extracted/files/src/codenamegary'
 
+###Docs
+
+PHPDocs are included in the repo under 'path/to/extracted/files/docs/index.html'.
+
 #Usage Examples
 
 ###Load a complex URL and merge in some query parameters.
