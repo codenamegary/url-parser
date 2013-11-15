@@ -1,5 +1,6 @@
-URLParser - 0.1.5 - BETA
+urlparser - 0.1.5 - BETA
 -------------
+[![Build Status](https://travis-ci.org/codenamegary/url-parser.png?branch=0.1.5-beta)](https://travis-ci.org/codenamegary/url-parser)
 
 The best little URL tool for PHP!
 
@@ -33,14 +34,14 @@ Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/ma
 ###Docs
 
 - PHPDocs are included in the repo under 'path/to/extracted/files/docs/index.html'
-- Plenty of documentation and examples throughout the source in [url.php](https://bitbucket.org/codenamegary/urlparser/src/codenamegary/urlparser/URL.php?at=master)
+- Plenty of documentation and examples throughout the source in [url.php](https://bitbucket.org/codenamegary/url-parser/src/b35343be3583178d870e2e7ebc0d9b6120d7ca2a/src/codenamegary/urlparser/URL.php?at=master)
 
 #Usage Examples
 
 ###Load a complex URL and merge in some query parameters.
 
 ```php
-$url = new codenamegary\URLParser\URL('https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.653226,-79.383184&sspn=0.444641,1.056747&geocode=FRCUIAIduoZTCCnnVy7whxtdYDGJG1cii2EBLg%3BFWoYmgIdcLVE-ymlO8bXkMvUiTF3xLQqUFU1Mg&oq=tokyo&mra=ls&t=m&z=3');
+$url = new codenamegary\urlparser\URL('https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.653226,-79.383184&sspn=0.444641,1.056747&geocode=FRCUIAIduoZTCCnnVy7whxtdYDGJG1cii2EBLg%3BFWoYmgIdcLVE-ymlO8bXkMvUiTF3xLQqUFU1Mg&oq=tokyo&mra=ls&t=m&z=3');
 $url->addQuery(array(
 	'foo'	=> 'bar',
 ));
@@ -54,7 +55,7 @@ https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.65
 ###Load a complex URL and get rid of some query parameters.
 
 ```php
-$url = new codenamegary\URLParser\URL('https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.653226,-79.383184&sspn=0.444641,1.056747&geocode=FRCUIAIduoZTCCnnVy7whxtdYDGJG1cii2EBLg%3BFWoYmgIdcLVE-ymlO8bXkMvUiTF3xLQqUFU1Mg&oq=tokyo&mra=ls&t=m&z=3');
+$url = new codenamegary\urlparser\URL('https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.653226,-79.383184&sspn=0.444641,1.056747&geocode=FRCUIAIduoZTCCnnVy7whxtdYDGJG1cii2EBLg%3BFWoYmgIdcLVE-ymlO8bXkMvUiTF3xLQqUFU1Mg&oq=tokyo&mra=ls&t=m&z=3');
 $url->stripQuery('geocode');
 echo $url->make();
 ```
@@ -66,7 +67,7 @@ https://maps.google.ca/maps?saddr=Tokyo,+Japan&daddr=Toronto,+ON&hl=en&sll=43.65
 
 ```php
 // .. and strip all the segments and query string from the URI
-$url = new codenamegary\URLParser\URL;
+$url = new codenamegary\urlparser\URL;
 $url->stripSegments()
     ->stripQueries()
     ->make();
@@ -79,7 +80,7 @@ Full URL of the current page minus the URI segments and query string.
 ###Swap a URI string
 
 ```php
-$url = new codenamegary\URLParser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe');
+$url = new codenamegary\urlparser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe');
 $url->swapSegment('date','raisin');
 echo $url->make();
 ```
@@ -91,7 +92,7 @@ http://www.apple.com/bananas/coconut/raisin/elephant/giraffe
 ###Put something in front of coconut
 
 ```php
-$url = new codenamegary\URLParser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe')
+$url = new codenamegary\urlparser\URL('http://www.apple.com/bananas/coconut/date/elephant/giraffe')
     ->prependSegment('lime','coconut');
 echo $url->make();
 ```
@@ -103,7 +104,7 @@ http://www.apple.com/bananas/lime/coconut/date/elephant/giraffe
 ###Change the host and protocol using method chaining
 
 ```php
-$url = codenamegary\URLParser\URL::to('http://www.apple.com/bananas/coconut/date/elephant/giraffe')->host('www.microsoft.com')->protocol('ftp');
+$url = codenamegary\urlparser\URL::to('http://www.apple.com/bananas/coconut/date/elephant/giraffe')->host('www.microsoft.com')->protocol('ftp');
 echo $url->make();
 ```
 
