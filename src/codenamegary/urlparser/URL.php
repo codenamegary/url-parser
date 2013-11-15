@@ -1,4 +1,4 @@
-<?php namespace codenamegary\URLParser;
+<?php namespace codenamegary\urlparser;
 
 use \Exception as Exception;
 

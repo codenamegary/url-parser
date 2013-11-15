@@ -1,4 +1,4 @@
-URLParser - 0.1.4 - BETA
+URLParser - 0.1.5 - BETA
 -------------
 
 The best little URL tool for PHP!
@@ -22,18 +22,18 @@ Download the Master ( [.zip](https://bitbucket.org/codenamegary/urlparser/get/ma
 
 - Extract to the location of your choosing
 - Include url.php
- - @include('path/to/extracted/files/src/codenamegary/URLParser/url.php');
+ - @include('path/to/extracted/files/src/codenamegary/urlparser/URL.php');
 - **OR** use a PSR-0 compatible Autoloader of your choice
  - Map namespace "codenamegary" => 'path/to/extracted/files/src/codenamegary'
 
 #####Composer via Packagist
 
-- In composer.json add "codenamegary/url-parser": "0.1.3-beta" to require
+- In composer.json add "codenamegary/url-parser": "0.1.5-beta" to require
 
 ###Docs
 
 - PHPDocs are included in the repo under 'path/to/extracted/files/docs/index.html'
-- Plenty of documentation and examples throughout the source in [url.php](https://bitbucket.org/codenamegary/urlparser/src/6a4b5b489cfb83ecd2c6dcda7d023753d11baa7b/src/codenamegary/URLParser/url.php?at=master)
+- Plenty of documentation and examples throughout the source in [url.php](https://bitbucket.org/codenamegary/urlparser/src/codenamegary/urlparser/URL.php?at=master)
 
 #Usage Examples
 

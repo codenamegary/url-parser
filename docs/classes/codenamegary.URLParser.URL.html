@@ -1,399 +1,510 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-<meta charset="utf-8">
-<title>phpDocumentor » \codenamegary\URLParser\URL</title>
-<meta name="author" content="Mike van Riel">
-<meta name="description" content="">
-<link href="../css/template.css" rel="stylesheet" media="all">
-<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
-<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
 </head>
 <body>
+
 <div class="navbar navbar-fixed-top">
-<div class="navbar-inner"><div class="container">
-<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
-<li class="dropdown">
-<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
-                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a>Namespaces</a></li>
-<li><a href="../namespaces/codenamegary.html"><i class="icon-th"></i> codenamegary</a></li>
-</ul>
-</li>
-<li class="dropdown" id="charts-menu">
-<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
-                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
-</li>
-<li class="dropdown" id="reports-menu">
-<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
-                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
-<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">18</span></a></li>
-<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
-                <ul></ul></a></li>
-<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
-                <span class="label label-info">0</span></a></li>
-</ul>
-</li>
-</ul></div>
-</div></div>
-<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/codenamegary.html">\codenamegary</a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                    <i class="icon-list-alt"></i>&#160;Errors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                    <i class="icon-list-alt"></i>&#160;Markers
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
 </div>
-<div id="___" class="container">
-<noscript><div class="alert alert-warning">
-                            Javascript is disabled; several features are only available
-                            if Javascript is enabled.
-                        </div></noscript>
-<div class="row">
-<div class="span4">
-<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
-<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
-</div>
-<ul class="side-nav nav nav-list">
-<li class="nav-header">
-<i class="icon-custom icon-method"></i> Methods
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-310513808"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-310513808" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-300145990"></a>
+                                <a href="../namespaces/codenamegary.html" style="margin-left: 30px; padding-left: 0">codenamegary</a>
+            </div>
+            <div id="namespace-300145990" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1317396384"></a>
+                                <a href="../namespaces/codenamegary.urlparser.html" style="margin-left: 30px; padding-left: 0">urlparser</a>
+            </div>
+            <div id="namespace-1317396384" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Base constructor, accepts a url or by default
-uses the current full URL of the page being
-visited."><span class="description">Base constructor, accepts a url or by default
-uses the current full URL of the page being
-visited.</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_addQuery" title="addQuery :: Appends a $key =&gt; $value array into the URL's
-query string."><span class="description">Appends a $key =&gt; $value array into the URL's
-query string.</span><pre>addQuery()</pre></a></li>
-<li class="method public "><a href="#method_anchor" title="anchor :: Sets or returns the anchor tag at the end of the URL"><span class="description">Sets or returns the anchor tag at the end of the URL</span><pre>anchor()</pre></a></li>
-<li class="method public "><a href="#method_appendSegment" title="appendSegment :: Appends a specified text segment to the URL path."><span class="description">Appends a specified text segment to the URL path.</span><pre>appendSegment()</pre></a></li>
-<li class="method public "><a href="#method_host" title="host :: Sets or returns the host (domain) for the url."><span class="description">Sets or returns the host (domain) for the url.</span><pre>host()</pre></a></li>
-<li class="method public "><a href="#method_make" title="make :: "><span class="description">make()
-        </span><pre>make()</pre></a></li>
-<li class="method public "><a href="#method_pass" title="pass :: Sets or returns the password for auth."><span class="description">Sets or returns the password for auth.</span><pre>pass()</pre></a></li>
-<li class="method public "><a href="#method_port" title="port :: Sets or returns the port for the url."><span class="description">Sets or returns the port for the url.</span><pre>port()</pre></a></li>
-<li class="method public "><a href="#method_prependSegment" title="prependSegment :: Prepends a specified text segment to the URL path."><span class="description">Prepends a specified text segment to the URL path.</span><pre>prependSegment()</pre></a></li>
-<li class="method public "><a href="#method_protocol" title="protocol :: Sets or returns the protocol for the URL (http/ftp/etc.)."><span class="description">Sets or returns the protocol for the URL (http/ftp/etc.).</span><pre>protocol()</pre></a></li>
-<li class="method public "><a href="#method_query" title="query :: Returns the query string for the current URL or, if
-$query is specified returns the value for that parameter"><span class="description">Returns the query string for the current URL or, if
-$query is specified returns the value for that parameter</span><pre>query()</pre></a></li>
-<li class="method public "><a href="#method_queryArray" title="queryArray :: Returns the query string for the current URL as a $key =&gt; $value array."><span class="description">Returns the query string for the current URL as a $key =&gt; $value array.</span><pre>queryArray()</pre></a></li>
-<li class="method public "><a href="#method_segmentArray" title="segmentArray :: Returns the segments (path) string for the current URL as an array."><span class="description">Returns the segments (path) string for the current URL as an array.</span><pre>segmentArray()</pre></a></li>
-<li class="method public "><a href="#method_segments" title="segments :: Returns the the entire segment path if $search is false or
-looks for $search in the URL path and returns true / false."><span class="description">Returns the the entire segment path if $search is false or
-looks for $search in the URL path and returns true / false.</span><pre>segments()</pre></a></li>
-<li class="method public "><a href="#method_stripQueries" title="stripQueries :: Strips the ENTIRE query string from the url."><span class="description">Strips the ENTIRE query string from the url.</span><pre>stripQueries()</pre></a></li>
-<li class="method public "><a href="#method_stripQuery" title='stripQuery :: Strips a query called "$query" from the query string.'><span class="description">Strips a query called "$query" from the query string.</span><pre>stripQuery()</pre></a></li>
-<li class="method public "><a href="#method_stripSegment" title="stripSegment :: Strips a segment called $s from the URI."><span class="description">Strips a segment called $s from the URI.</span><pre>stripSegment()</pre></a></li>
-<li class="method public "><a href="#method_stripSegments" title="stripSegments :: Strips all segments from the URL"><span class="description">Strips all segments from the URL</span><pre>stripSegments()</pre></a></li>
-<li class="method public "><a href="#method_swapQueries" title="swapQueries :: Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname"><span class="description">Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname</span><pre>swapQueries()</pre></a></li>
-<li class="method public "><a href="#method_swapQuery" title="swapQuery :: Renames a query parameter from $oldName to $newName"><span class="description">Renames a query parameter from $oldName to $newName</span><pre>swapQuery()</pre></a></li>
-<li class="method public "><a href="#method_swapSegments" title="swapSegments :: Swaps segment names using $key =&gt; $value input where
-$oldname =&gt; $newname."><span class="description">Swaps segment names using $key =&gt; $value input where
-$oldname =&gt; $newname.</span><pre>swapSegments()</pre></a></li>
-<li class="method public "><a href="#method_to" title="to :: Swaps the base URL the parser is operating on for the
-URL passed in $url."><span class="description">Swaps the base URL the parser is operating on for the
-URL passed in $url.</span><pre>to()</pre></a></li>
-<li class="method public "><a href="#method_user" title="user :: Sets or returns the user for auth."><span class="description">Sets or returns the user for auth.</span><pre>user()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header protected">» Protected
+                                                                                                    <li class="class"><a href="../classes/codenamegary.urlparser.Batch.html">Batch</a></li>
+                                                    <li class="class"><a href="../classes/codenamegary.urlparser.URL.html">URL</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
                     <ul>
-<li class="method protected "><a href="#method_currentURL" title="currentURL :: Parses and returns the full URL of the page
-currently being visited."><span class="description">Parses and returns the full URL of the page
-currently being visited.</span><pre>currentURL()</pre></a></li>
-<li class="method protected "><a href="#method_insertIntoArrayAtKey" title="insertIntoArrayAtKey :: "><span class="description">insertIntoArrayAtKey()
-        </span><pre>insertIntoArrayAtKey()</pre></a></li>
-<li class="method protected "><a href="#method_renameArrayKey" title="renameArrayKey :: Lookups up $oldKey in $array and renames the key to $newKey"><span class="description">Lookups up $oldKey in $array and renames the key to $newKey</span><pre>renameArrayKey()</pre></a></li>
-<li class="method protected "><a href="#method_renameArrayKeys" title="renameArrayKeys :: Plural of renameArrayKey, allows passing of oldKey =&gt; newKey as an array."><span class="description">Plural of renameArrayKey, allows passing of oldKey =&gt; newKey as an array.</span><pre>renameArrayKeys()</pre></a></li>
-<li class="method protected "><a href="#method_sliceArrayAtKey" title="sliceArrayAtKey :: Takes an array and returns an array of 2 arrays."><span class="description">Takes an array and returns an array of 2 arrays.</span><pre>sliceArrayAtKey()</pre></a></li>
-</ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-property"></i> Properties
-                    <ul></ul>
-</li>
-<li class="nav-header protected">» Protected
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
                     <ul>
-<li class="property protected "><a href="#property_resetURL" title="$resetURL :: Same as $url but always contains a blank array,
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/codenamegary.urlparser.html">\codenamegary\urlparser</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\codenamegary\urlparser</small>URL</h1>
+                    <p><em></em></p>
+                    
+
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_to" class="">to()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_queryArray" class="">queryArray()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_query" class="">query()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_addQuery" class="">addQuery()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_stripQuery" class="">stripQuery()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_stripQueries" class="">stripQueries()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_swapQuery" class="">swapQuery()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_swapQueries" class="">swapQueries()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_segmentArray" class="">segmentArray()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_segments" class="">segments()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_appendSegment" class="">appendSegment()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_prependSegment" class="">prependSegment()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_stripSegment" class="">stripSegment()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_stripSegments" class="">stripSegments()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_swapSegments" class="">swapSegments()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_anchor" class="">anchor()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_protocol" class="">protocol()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_host" class="">host()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_port" class="">port()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_user" class="">user()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_pass" class="">pass()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_make" class="">make()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_currentURL" class="">currentURL()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_renameArrayKey" class="">renameArrayKey()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_renameArrayKeys" class="">renameArrayKeys()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_sliceArrayAtKey" class="">sliceArrayAtKey()</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#method_insertIntoArrayAtKey" class="">insertIntoArrayAtKey()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#property_url" class="">$url</a><br />
+                                                                    <a href="../classes/codenamegary.urlparser.URL.html#property_resetURL" class="">$resetURL</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/URL.php.html"><div class="path-wrapper">URL.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\codenamegary\urlparser\URL</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_url" name="property_url" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$url</h3>
+                <pre class="signature">$url : array</pre>
+                <p><em>The actively used URL in the format dictated by
+PHP&#039;s built-in parse_url function. This is the
+property which is actively used and modified
+throughout the functions of this class.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_resetURL" name="property_resetURL" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$resetURL</h3>
+                <pre class="signature">$resetURL : array</pre>
+                <p><em>Same as $url but always contains a blank array,
 used by the _to() method to reset the current
 URL property when overwriting with a new
-base URL."><span class="description"></span><pre>$resetURL</pre></a></li>
-<li class="property protected "><a href="#property_url" title="$url :: The actively used URL in the format dictated by
-PHP's built-in parse_url function."><span class="description"></span><pre>$url</pre></a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="span8">
-<a id="\codenamegary\URLParser\URL"></a><ul class="breadcrumb">
-<li>
-<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
-</li>
-<li><a href="../namespaces/codenamegary.html">codenamegary</a></li>
-<li>
-<span class="divider">\</span><a href="../namespaces/codenamegary.URLParser.html">URLParser</a>
-</li>
-<li class="active">
-<span class="divider">\</span><a href="../classes/codenamegary.URLParser.URL.html">URL</a>
-</li>
-</ul>
-<div class="element class"><div class="details">
-<h3>
-<i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Base constructor, accepts a url or by default
+base URL.</em></p>
+                
+
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string <span class="argument">$url</span>) : object</pre>
+                <p><em>Base constructor, accepts a url or by default
 uses the current full URL of the page being
-visited.</h2>
-<pre>__construct(string $url) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$url</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_addQuery"></a><div class="element clickable method public method_addQuery" data-toggle="collapse" data-target=".method_addQuery .collapse">
-<h2>Appends a $key =&gt; $value array into the URL's
-query string.</h2>
-<pre>addQuery(array $query) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+visited.</em></p>
+                
 
-<p>$url = new URLParser\URL('http://www.example.com');
-$url->addQuery(array(
-        'val1'      => 'stuff',
-        'val2'      => 'more stuff',
-));
-echo $url->make();</p>
 
-<p>Outputs...</p>
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-<pre><code>    http://www.example.com?val1=stuff&amp;val2=more+stuff
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$query</h4>
-<code>array</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_anchor"></a><div class="element clickable method public method_anchor" data-toggle="collapse" data-target=".method_anchor .collapse">
-<h2>Sets or returns the anchor tag at the end of the URL</h2>
-<pre>anchor(string $anchor) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_to" name="method_to" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">to()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">to(string <span class="argument">$url</span>) : object</pre>
+                <p><em>Swaps the base URL the parser is operating on for the
+URL passed in $url. This is useful for scenarios where
+you wish to batch add query strings to multiple URLs.</em></p>
+                <p>You can setup the queries on one object and then to()
+and make() multiple calls to generate new URLs.</p>
 
-<p>$url = new URLParser\URL('http://www.example.com');
-$url->anchor('products');
-echo $url->make();</p>
 
-<p>Outputs...</p>
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-<pre><code>    http://www.example.com/#products
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$anchor</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
-<a id="method_appendSegment"></a><div class="element clickable method public method_appendSegment" data-toggle="collapse" data-target=".method_appendSegment .collapse">
-<h2>Appends a specified text segment to the URL path.</h2>
-<pre>appendSegment(string $newSegment, string $appendAfter) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Optionally
-a segment can be specified ($appendAfter) and the new segment
-will be inserted immediately following the instance of
-$appendAfter.</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_queryArray" name="method_queryArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">queryArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">queryArray() : array</pre>
+                <p><em>Returns the query string for the current URL as a $key =&gt; $value array.</em></p>
+                <p>eg...</p>
 
-<p>eg...</p>
-
-<p>$url = new URLParser\URL('http://www.example.com/products/services');
-$url->appendSegment('test');
-echo $url->make() . "&lt;br/>";
-$url->appendSegment('argh','products');
-echo $url->make() . "&lt;br/>";</p>
-
-<p>Outputs...</p>
-
-<pre><code>    http://www.example.com/products/services/test
-    http://www.example.com/products/argh/services/test
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$newSegment</h4>
-<code>string</code>
-</div>
-<div class="subelement argument">
-<h4>$appendAfter</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_host"></a><div class="element clickable method public method_host" data-toggle="collapse" data-target=".method_host .collapse">
-<h2>Sets or returns the host (domain) for the url.</h2>
-<pre>host(string $host) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
-
-<p>$url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
-$url->host('www.google.ca');
-echo $url->make();</p>
+<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
+var_dump($url->queryArray());</p>
 
 <p>Outputs...</p>
 
-<pre><code>    http://www.google.ca/stuff?val1=foo
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$host</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
-<a id="method_make"></a><div class="element clickable method public method_make" data-toggle="collapse" data-target=".method_make .collapse">
-<h2>make()
-        </h2>
-<pre>make() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_pass"></a><div class="element clickable method public method_pass" data-toggle="collapse" data-target=".method_pass .collapse">
-<h2>Sets or returns the password for auth.</h2>
-<pre>pass(string $pass) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>User must be specified first.</p>
+<p>array(2) {
+    ["val1"]=>
+    string(8) "products"
+    ["val2"]=>
+    string(8) "services"
+}</p>
 
-<p>eg...</p>
 
-<p>$url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
-$url->user('joe');
-$url->pass('foobar');
-echo $url->make();</p>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-<p>Outputs...</p>
-
-<pre><code>    http://joe:foobar@www.example.com/stuff?val1=foo
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$pass</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
-<a id="method_port"></a><div class="element clickable method public method_port" data-toggle="collapse" data-target=".method_port .collapse">
-<h2>Sets or returns the port for the url.</h2>
-<pre>port(string $port) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
-
-<p>$url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
-$url->port(8080);
-echo $url->make();</p>
-
-<p>Outputs...</p>
-
-<pre><code>    http://www.example.com:8080/stuff?val1=foo
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$port</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
-<a id="method_prependSegment"></a><div class="element clickable method public method_prependSegment" data-toggle="collapse" data-target=".method_prependSegment .collapse">
-<h2>Prepends a specified text segment to the URL path.</h2>
-<pre>prependSegment(string $newSegment, string $prependBefore) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Optionally
-a segment can be specified ($prependBefore) and the new segment
-will be inserted immediately before the instance of
-$prependBefore.</p>
-
-<p>eg...</p>
-
-<p>$url = new URLParser\URL('http://www.example.com/products/services');
-$url->prependSegment('test');
-echo $url->make() . "&lt;br/>";
-$url->prependSegment('argh','products');
-echo $url->make() . "&lt;br/>";</p>
-
-<p>Outputs...</p>
-
-<pre><code>    http://www.example.com/test/products/services
-    http://www.example.com/test/argh/products/services
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$newSegment</h4>
-<code>string</code>
-</div>
-<div class="subelement argument">
-<h4>$prependBefore</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_protocol"></a><div class="element clickable method public method_protocol" data-toggle="collapse" data-target=".method_protocol .collapse">
-<h2>Sets or returns the protocol for the URL (http/ftp/etc.).</h2>
-<pre>protocol(string $protocol) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
-
-<p>$url = new URLParser\URL('http://www.example.com');
-$url->protocol('ftp');
-echo $url->make();</p>
-
-<p>Outputs...</p>
-
-<pre><code>    ftp://www.example.com
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$protocol</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
-<a id="method_query"></a><div class="element clickable method public method_query" data-toggle="collapse" data-target=".method_query .collapse">
-<h2>Returns the query string for the current URL or, if
-$query is specified returns the value for that parameter</h2>
-<pre>query(string $query) : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_query" name="method_query" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">query()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">query(string <span class="argument">$query</span>) : string</pre>
+                <p><em>Returns the query string for the current URL or, if
+$query is specified returns the value for that parameter</em></p>
+                <p>eg...</p>
 
 <p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
 echo $url->query('val1') . "&lt;br/>";
@@ -407,44 +518,278 @@ echo $url->query() . "&lt;br/>";</p>
     services
 
     val1=products&amp;val2=services
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$query</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
-</div></div>
-</div>
-<a id="method_queryArray"></a><div class="element clickable method public method_queryArray" data-toggle="collapse" data-target=".method_queryArray .collapse">
-<h2>Returns the query string for the current URL as a $key =&gt; $value array.</h2>
-<pre>queryArray() : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+</code></pre>
 
-<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
-var_dump($url->queryArray());</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addQuery" name="method_addQuery" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addQuery()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addQuery(array <span class="argument">$query</span>) : object</pre>
+                <p><em>Appends a $key =&gt; $value array into the URL&#039;s
+query string.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com');
+$url->addQuery(array(
+        'val1'      => 'stuff',
+        'val2'      => 'more stuff',
+));
+echo $url->make();</p>
 
 <p>Outputs...</p>
 
-<p>array(2) {
-    ["val1"]=>
-    string(8) "products"
-    ["val2"]=>
-    string(8) "services"
-}</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_segmentArray"></a><div class="element clickable method public method_segmentArray" data-toggle="collapse" data-target=".method_segmentArray .collapse">
-<h2>Returns the segments (path) string for the current URL as an array.</h2>
-<pre>segmentArray() : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+<pre><code>    http://www.example.com?val1=stuff&amp;val2=more+stuff
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$query</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stripQuery" name="method_stripQuery" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stripQuery()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stripQuery(string <span class="argument">$query</span>) : object</pre>
+                <p><em>Strips a query called &quot;$query&quot; from the query string.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
+$url->stripQuery('val1');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.example.com?val2=services
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$query</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stripQueries" name="method_stripQueries" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stripQueries()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stripQueries() : object</pre>
+                <p><em>Strips the ENTIRE query string from the url.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
+$url->stripQueries();
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.example.com
+</code></pre>
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_swapQuery" name="method_swapQuery" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">swapQuery()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">swapQuery( <span class="argument">$oldName</span>,  <span class="argument">$newName</span>) : object</pre>
+                <p><em>Renames a query parameter from $oldName to $newName</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
+$url->swapQuery('val1','valX');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.example.com?val2=services&amp;valX=products
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$oldName</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$newName</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_swapQueries" name="method_swapQueries" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">swapQueries()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">swapQueries( <span class="argument">$queries</span>) : object</pre>
+                <p><em>Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
+$url->swapQueries(array(
+    'val1'  => 'valX',
+    'val2'  => 'valY',
+));
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.example.com?valX=products&amp;valY=services
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$queries</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_segmentArray" name="method_segmentArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">segmentArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">segmentArray() : array</pre>
+                <p><em>Returns the segments (path) string for the current URL as an array.</em></p>
+                <p>eg...</p>
 
 <p>$url = new URLParser\URL('http://www.example.com/products/services');
 var_dump($url->segmentArray());</p>
@@ -456,18 +801,36 @@ var_dump($url->segmentArray());</p>
     string(8) "products"
     [1]=>
     string(8) "services"
-}</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_segments"></a><div class="element clickable method public method_segments" data-toggle="collapse" data-target=".method_segments .collapse">
-<h2>Returns the the entire segment path if $search is false or
-looks for $search in the URL path and returns true / false.</h2>
-<pre>segments(string $search) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+}</p>
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_segments" name="method_segments" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">segments()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">segments(string <span class="argument">$search</span>) : mixed</pre>
+                <p><em>Returns the the entire segment path if $search is false or
+looks for $search in the URL path and returns true / false.</em></p>
+                <p>eg...</p>
 
 <p>$url = new URLParser\URL('http://www.example.com/products/services');
 echo $url->segments('products') . "&lt;br/>";
@@ -481,65 +844,160 @@ echo $url->segments() . "&lt;br/>";</p>
     (true)
     (false)
     /products/services
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$search</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
-<a id="method_stripQueries"></a><div class="element clickable method public method_stripQueries" data-toggle="collapse" data-target=".method_stripQueries .collapse">
-<h2>Strips the ENTIRE query string from the url.</h2>
-<pre>stripQueries() : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+</code></pre>
 
-<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
-$url->stripQueries();
-echo $url->make();</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$search</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_appendSegment" name="method_appendSegment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">appendSegment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">appendSegment(string <span class="argument">$newSegment</span>, string <span class="argument">$appendAfter</span>) : object</pre>
+                <p><em>Appends a specified text segment to the URL path. Optionally
+a segment can be specified ($appendAfter) and the new segment
+will be inserted immediately following the instance of
+$appendAfter.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com/products/services');
+$url->appendSegment('test');
+echo $url->make() . "&lt;br/>";
+$url->appendSegment('argh','products');
+echo $url->make() . "&lt;br/>";</p>
 
 <p>Outputs...</p>
 
-<pre><code>    http://www.example.com
-</code></pre></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_stripQuery"></a><div class="element clickable method public method_stripQuery" data-toggle="collapse" data-target=".method_stripQuery .collapse">
-<h2>Strips a query called "$query" from the query string.</h2>
-<pre>stripQuery(string $query) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+<pre><code>    http://www.example.com/products/services/test
+    http://www.example.com/products/argh/services/test
+</code></pre>
 
-<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
-$url->stripQuery('val1');
-echo $url->make();</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newSegment</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$appendAfter</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_prependSegment" name="method_prependSegment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">prependSegment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">prependSegment(string <span class="argument">$newSegment</span>, string <span class="argument">$prependBefore</span>) : object</pre>
+                <p><em>Prepends a specified text segment to the URL path. Optionally
+a segment can be specified ($prependBefore) and the new segment
+will be inserted immediately before the instance of
+$prependBefore.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com/products/services');
+$url->prependSegment('test');
+echo $url->make() . "&lt;br/>";
+$url->prependSegment('argh','products');
+echo $url->make() . "&lt;br/>";</p>
 
 <p>Outputs...</p>
 
-<pre><code>    http://www.example.com?val2=services
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$query</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_stripSegment"></a><div class="element clickable method public method_stripSegment" data-toggle="collapse" data-target=".method_stripSegment .collapse">
-<h2>Strips a segment called $s from the URI.</h2>
-<pre>stripSegment(string $s) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+<pre><code>    http://www.example.com/test/products/services
+    http://www.example.com/test/argh/products/services
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newSegment</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$prependBefore</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stripSegment" name="method_stripSegment" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stripSegment()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stripSegment(string <span class="argument">$s</span>) : object</pre>
+                <p><em>Strips a segment called $s from the URI.</em></p>
+                <p>eg...</p>
 
 <p>$url = new URLParser\URL('http://www.example.com/products/services');
 $url->stripSegment('products');
@@ -548,22 +1006,44 @@ echo $url->make();</p>
 <p>Outputs...</p>
 
 <pre><code>    http://www.example.com/services
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$s</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_stripSegments"></a><div class="element clickable method public method_stripSegments" data-toggle="collapse" data-target=".method_stripSegments .collapse">
-<h2>Strips all segments from the URL</h2>
-<pre>stripSegments() : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$s</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_stripSegments" name="method_stripSegments" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">stripSegments()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">stripSegments() : object</pre>
+                <p><em>Strips all segments from the URL</em></p>
+                <p>eg...</p>
 
 <p>$url = new URLParser\URL('http://www.example.com/products/services?val1=stuff&amp;val2=more+stuff');
 $url->stripSegments();
@@ -572,64 +1052,36 @@ echo $url->make();</p>
 <p>Outputs...</p>
 
 <pre><code>    http://www.example.com?val1=stuff&amp;val2=more+stuff
-</code></pre></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_swapQueries"></a><div class="element clickable method public method_swapQueries" data-toggle="collapse" data-target=".method_swapQueries .collapse">
-<h2>Renames a set of query parameters from a key =&gt; value array of oldname =&gt; newname</h2>
-<pre>swapQueries($queries) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+</code></pre>
 
-<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
-$url->swapQueries(array(
-    'val1'  => 'valX',
-    'val2'  => 'valY',
-));
-echo $url->make();</p>
 
-<p>Outputs...</p>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
 
-<pre><code>    http://www.example.com?valX=products&amp;valY=services
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$queries</h4></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_swapQuery"></a><div class="element clickable method public method_swapQuery" data-toggle="collapse" data-target=".method_swapQuery .collapse">
-<h2>Renames a query parameter from $oldName to $newName</h2>
-<pre>swapQuery($oldName, $newName) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
-
-<p>$url = new URLParser\URL('http://www.example.com?val1=products&amp;val2=services');
-$url->swapQuery('val1','valX');
-echo $url->make();</p>
-
-<p>Outputs...</p>
-
-<pre><code>    http://www.example.com?val2=services&amp;valX=products
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$oldName</h4></div>
-<div class="subelement argument"><h4>$newName</h4></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_swapSegments"></a><div class="element clickable method public method_swapSegments" data-toggle="collapse" data-target=".method_swapSegments .collapse">
-<h2>Swaps segment names using $key =&gt; $value input where
-$oldname =&gt; $newname.</h2>
-<pre>swapSegments(array $newSegments) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_swapSegments" name="method_swapSegments" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">swapSegments()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">swapSegments(array <span class="argument">$newSegments</span>) : object</pre>
+                <p><em>Swaps segment names using $key =&gt; $value input where
+$oldname =&gt; $newname.</em></p>
+                <p>eg...</p>
 
 <p>$url = new URLParser\URL('http://www.example.com/oldSegment/home');
 $url->swapSegments(array(
@@ -641,41 +1093,228 @@ echo $url->make();</p>
 <p>Outputs...</p>
 
 <pre><code>    http://www.example.com/newSegment/main
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$newSegments</h4>
-<code>array</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_to"></a><div class="element clickable method public method_to" data-toggle="collapse" data-target=".method_to .collapse">
-<h2>Swaps the base URL the parser is operating on for the
-URL passed in $url.</h2>
-<pre>to(string $url) : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This is useful for scenarios where
-you wish to batch add query strings to multiple URLs.
-You can setup the queries on one object and then to()
-and make() multiple calls to generate new URLs.</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$url</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>object</code></div>
-</div></div>
-</div>
-<a id="method_user"></a><div class="element clickable method public method_user" data-toggle="collapse" data-target=".method_user .collapse">
-<h2>Sets or returns the user for auth.</h2>
-<pre>user(string $user) : mixed</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$newSegments</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    object
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_anchor" name="method_anchor" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">anchor()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">anchor(string <span class="argument">$anchor</span>) : mixed</pre>
+                <p><em>Sets or returns the anchor tag at the end of the URL</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com');
+$url->anchor('products');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.example.com/#products
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$anchor</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_protocol" name="method_protocol" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">protocol()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">protocol(string <span class="argument">$protocol</span>) : mixed</pre>
+                <p><em>Sets or returns the protocol for the URL (http/ftp/etc.).</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com');
+$url->protocol('ftp');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    ftp://www.example.com
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$protocol</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_host" name="method_host" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">host()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">host(string <span class="argument">$host</span>) : mixed</pre>
+                <p><em>Sets or returns the host (domain) for the url.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
+$url->host('www.google.ca');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.google.ca/stuff?val1=foo
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$host</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_port" name="method_port" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">port()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">port(string <span class="argument">$port</span>) : mixed</pre>
+                <p><em>Sets or returns the port for the url.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
+$url->port(8080);
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://www.example.com:8080/stuff?val1=foo
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$port</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_user" name="method_user" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">user()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">user(string <span class="argument">$user</span>) : mixed</pre>
+                <p><em>Sets or returns the user for auth.</em></p>
+                <p>eg...</p>
 
 <p>$url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
 $url->user('joe');
@@ -684,48 +1323,147 @@ echo $url->make();</p>
 <p>Outputs...</p>
 
 <pre><code>    http://joe@www.example.com/stuff?val1=foo
-</code></pre></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$user</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
-</div></div>
-</div>
-<a id="method_currentURL"></a><div class="element clickable method protected method_currentURL" data-toggle="collapse" data-target=".method_currentURL .collapse">
-<h2>Parses and returns the full URL of the page
-currently being visited.</h2>
-<pre>currentURL() : string</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>Used by the
-__construct method.</p></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
-</div></div>
-</div>
-<a id="method_insertIntoArrayAtKey"></a><div class="element clickable method protected method_insertIntoArrayAtKey" data-toggle="collapse" data-target=".method_insertIntoArrayAtKey .collapse">
-<h2>insertIntoArrayAtKey()
-        </h2>
-<pre>insertIntoArrayAtKey($array, $key, $newKeyValuePairs, $offset) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument"><h4>$array</h4></div>
-<div class="subelement argument"><h4>$key</h4></div>
-<div class="subelement argument"><h4>$newKeyValuePairs</h4></div>
-<div class="subelement argument"><h4>$offset</h4></div>
-</div></div>
-</div>
-<a id="method_renameArrayKey"></a><div class="element clickable method protected method_renameArrayKey" data-toggle="collapse" data-target=".method_renameArrayKey .collapse">
-<h2>Lookups up $oldKey in $array and renames the key to $newKey</h2>
-<pre>renameArrayKey(array $array, string $oldKey, string $newKey) : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$user</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_pass" name="method_pass" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">pass()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">pass(string <span class="argument">$pass</span>) : mixed</pre>
+                <p><em>Sets or returns the password for auth. User must be specified first.</em></p>
+                <p>eg...</p>
+
+<p>$url = new URLParser\URL('http://www.example.com/stuff?val1=foo');
+$url->user('joe');
+$url->pass('foobar');
+echo $url->make();</p>
+
+<p>Outputs...</p>
+
+<pre><code>    http://joe:foobar@www.example.com/stuff?val1=foo
+</code></pre>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$pass</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_make" name="method_make" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">make()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">make()</pre>
+                <p><em></em></p>
+                
+
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_currentURL" name="method_currentURL" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">currentURL()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">currentURL() : string</pre>
+                <p><em>Parses and returns the full URL of the page
+currently being visited. Used by the
+__construct method.</em></p>
+                
+
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renameArrayKey" name="method_renameArrayKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">renameArrayKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renameArrayKey(array <span class="argument">$array</span>, string <span class="argument">$oldKey</span>, string <span class="argument">$newKey</span>) : array</pre>
+                <p><em>Lookups up $oldKey in $array and renames the key to $newKey</em></p>
+                <p>eg...</p>
 
 <p>$arr = array(
         'foo'       => 'bar',
@@ -739,30 +1477,56 @@ __construct method.</p></div>
 <p>array(
         'test'      => 'bar',
         'foo2'      => 'bar2',
-)</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$array</h4>
-<code>array</code>
-</div>
-<div class="subelement argument">
-<h4>$oldKey</h4>
-<code>string</code>
-</div>
-<div class="subelement argument">
-<h4>$newKey</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_renameArrayKeys"></a><div class="element clickable method protected method_renameArrayKeys" data-toggle="collapse" data-target=".method_renameArrayKeys .collapse">
-<h2>Plural of renameArrayKey, allows passing of oldKey =&gt; newKey as an array.</h2>
-<pre>renameArrayKeys(array $array, array $newKeys) : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>eg...</p>
+)</p>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$array</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$oldKey</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$newKey</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renameArrayKeys" name="method_renameArrayKeys" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">renameArrayKeys()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renameArrayKeys(array <span class="argument">$array</span>, array <span class="argument">$newKeys</span>) : array</pre>
+                <p><em>Plural of renameArrayKey, allows passing of oldKey =&gt; newKey as an array.</em></p>
+                <p>eg...</p>
 
 <p>$arr = array(
         'foo'       => 'bar',
@@ -776,26 +1540,50 @@ __construct method.</p></div>
 <p>array(
         'test'      => 'bar',
         'foo2'      => 'bar2',
-)</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$array</h4>
-<code>array</code>
-</div>
-<div class="subelement argument">
-<h4>$newKeys</h4>
-<code>array</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_sliceArrayAtKey"></a><div class="element clickable method protected method_sliceArrayAtKey" data-toggle="collapse" data-target=".method_sliceArrayAtKey .collapse">
-<h2>Takes an array and returns an array of 2 arrays.</h2>
-<pre>sliceArrayAtKey(array $array, string $key, boolean $offset) : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"><ul>
+)</p>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$array</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$newKeys</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_sliceArrayAtKey" name="method_sliceArrayAtKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">sliceArrayAtKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">sliceArrayAtKey(array <span class="argument">$array</span>, string <span class="argument">$key</span>, boolean <span class="argument">$offset</span>) : array</pre>
+                <p><em>Takes an array and returns an array of 2 arrays.</em></p>
+                <ul>
 <li>One array including everything BEFORE the specified key</li>
 <li>Another array INCLUDING the specified key and everything AFTER</li>
 </ul>
@@ -989,47 +1777,156 @@ array(
         ),
         [1]
         ),
-)</p></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$array</h4>
-<code>array</code>
+)</p>
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$array</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$offset</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                                </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_insertIntoArrayAtKey" name="method_insertIntoArrayAtKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">insertIntoArrayAtKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">insertIntoArrayAtKey( <span class="argument">$array</span>,  <span class="argument">$key</span>,  <span class="argument">$newKeyValuePairs</span>,  <span class="argument">$offset</span>)</pre>
+                <p><em></em></p>
+                
+
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$array</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$key</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$newKeyValuePairs</td>
+                                <td>
+</td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$offset</td>
+                                <td>
+</td>
+                            </tr>
+                                            </table>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">URL.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/URL.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/codenamegary.html">\codenamegary</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Errors</a></li>
+                                    <li><a href="">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on November 15th, 2013 at 20:56.
+                </section>
+            </section>
+        </section>
+    </footer>
 </div>
-<div class="subelement argument">
-<h4>$key</h4>
-<code>string</code>
-</div>
-<div class="subelement argument">
-<h4>$offset</h4>
-<code>boolean</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<h3>
-<i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_resetURL"> </a><div class="element clickable property protected property_resetURL" data-toggle="collapse" data-target=".property_resetURL .collapse">
-<h2></h2>
-<pre>$resetURL : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_url"> </a><div class="element clickable property protected property_url" data-toggle="collapse" data-target=".property_url .collapse">
-<h2></h2>
-<pre>$url : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"><p>This is the
-property which is actively used and modified
-throughout the functions of this class.</p></div></div></div>
-</div>
-</div></div>
-</div>
-</div>
-<div class="row"><footer class="span12">
-            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
-            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-04-02T00:10:49-04:00.<br></footer></div>
-</div>
+
 </body>
 </html>
