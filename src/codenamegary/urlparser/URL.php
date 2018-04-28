@@ -613,7 +613,7 @@ class URL {
 		$arrStart = ( $offset > 0 ) ? $array : array() ;
 		$arrEnd = ( $offset <= 0 ) ? $array : array() ;
 		$arrKeys = array_keys( $array );
-		$key = $key ? array_search( $key, $array ) : false ;
+		$key = $key ? array_search( $key, $arrKeys ) : false ;
 		if( $key !== false )
 		{
 			$arrStart = array_slice( $array, 0, $key + $offset );
